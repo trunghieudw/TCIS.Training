@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32929.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCIS.Training.VariablesConstants", "TCIS.Training.01VariablesConstants\TCIS.Training.VariablesConstants.csproj", "{A66A97CE-1FF5-4469-A269-392F2C71B18C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A66A97CE-1FF5-4469-A269-392F2C71B18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A66A97CE-1FF5-4469-A269-392F2C71B18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A66A97CE-1FF5-4469-A269-392F2C71B18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A66A97CE-1FF5-4469-A269-392F2C71B18C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0797346-D507-4CCF-BC1E-39B032BAE978}
+	EndGlobalSection
+EndGlobal
