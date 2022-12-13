@@ -4,7 +4,24 @@ using System.Linq;
 
 
 namespace TCIS.Training.Array
-{
+{ 
+    public class Person
+    {
+        public int Id {get;set;}
+        public string Name {get;set;}
+
+        public Person(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
+
+        public override string ToString()
+        {
+            return  $"{Id} - {Name}";
+        }
+    }
     class Program
     {
       
@@ -28,7 +45,13 @@ namespace TCIS.Training.Array
             {
                 Console.WriteLine(array[amount]); 
             }
-            
+
+
+            Person [] persons = 
+            {
+               new   Person(1,"A"),  
+               new   Person(2,"B"),  
+            };
 
 
             Console.ReadKey();
