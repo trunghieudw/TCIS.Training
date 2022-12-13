@@ -25,18 +25,6 @@ namespace TCIS.Training.LoopFor
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     class Program
     {
         static void Main(string[] args)
@@ -54,8 +42,8 @@ namespace TCIS.Training.LoopFor
             int count =  persons.Count();  
             foreach(var person in persons)
             {
-                Console.Write(person.ToString())
-            }
+                Console.Write(person.ToString());
+            };
 
             for(int i = 1; i <= count; i++)
             {
@@ -87,14 +75,14 @@ namespace TCIS.Training.LoopFor
 
 
             int n = 10;
-            for(int i = 0; i< n)
+            for (int i = 0; i < n;) 
             {
                 Console.Write("A");
             }
 
 
-            string [] arr = ["A","B","C","D","E"];
-            int len = arr.length;
+            string [] arr = { "A", "B", "C", "D", "E" };
+            int len = arr.Length;
 
             for(int i = 0; i < len; i++ )
             {
