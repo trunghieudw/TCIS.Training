@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCIS.Training.LoopFor", "TC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCIS.Training.Array", "TCIS.Training.Array\TCIS.Training.Array.csproj", "{06E35424-F1D0-4090-841E-4D1EB5B1308D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCIS.Training.Menthod", "TCIS.Training.Menthod\TCIS.Training.Menthod.csproj", "{9D40568C-6033-4ED0-B06F-68597BF3EDDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{06E35424-F1D0-4090-841E-4D1EB5B1308D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06E35424-F1D0-4090-841E-4D1EB5B1308D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06E35424-F1D0-4090-841E-4D1EB5B1308D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D40568C-6033-4ED0-B06F-68597BF3EDDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D40568C-6033-4ED0-B06F-68597BF3EDDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D40568C-6033-4ED0-B06F-68597BF3EDDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D40568C-6033-4ED0-B06F-68597BF3EDDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
