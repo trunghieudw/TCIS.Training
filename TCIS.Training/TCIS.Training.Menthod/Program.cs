@@ -15,6 +15,7 @@ namespace TCIS.Training.Menthod
                 Id = id;
                 Name = name;
             }
+
             public override string ToString()
             {
                 return $"{Id} - {Name}";
@@ -22,16 +23,68 @@ namespace TCIS.Training.Menthod
         }
 
 
+        public class People
+        {
+            public Person[] Persons = null;
+
+            public People 
+            {
+                Persons = new Person[];
+            }
+
+            public void Add(List<Person> person)
+            {
+                Persons.AddRange(person);  
+            } 
+
+            public void Add(Person person)
+            {
+                Persons.Add(person);  
+            }
+
+            public void Remove(int id) //==> Method parameter
+            {
+                 var p = Persons.FirstOrDefault(x=>x.Id = id); //variable
+                 Persons.Remove(p);
+            }
+
+            public void Remove(params int[] id)
+            {
+                 var p = Persons.FirstOrDefault(x=>x.Id = id);
+                 Persons.Remove(p);
+            }
+
+
+
+            //Update
+            //Find
+            //RemoveMultils
+
+
+        }
+
 
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            Person person = new Person(1,"A");
-            Person person2 = new Person(2, "B");
+            People people = new People();
 
-            person.ToString();
-            person2.ToString();
+            Person person = new Person(1,"A");
+            people.Add(person);
+
+            Person person2 = new Person(2, "B");
+            people.Add(person2);
+
+            people.Remove(1,2,3,4)
+
+            for (int i = 0; i < people.Persons.Count(); i++)
+            {
+                Person p = people.Persons[i];
+
+                Console.WriteLine(p.ToString());
+            }
+
             Console.ReadKey();
         }
 
