@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCIS.Training.Menthod", "TC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCIS.Training.Class", "TCIS.Training.Class\TCIS.Training.Class.csproj", "{71B7A1B9-6516-4CD5-BFE3-8CFF0592F032}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCIS.Training.ClassExample", "TCIS.Training.ClassExample\TCIS.Training.ClassExample.csproj", "{125A6BE1-D62C-4A8D-A680-DDE213C147BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BroCode", "BroCode", "{AD798EAC-FE41-4A4D-AF13-E462C1D2297E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,10 @@ Global
 		{71B7A1B9-6516-4CD5-BFE3-8CFF0592F032}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71B7A1B9-6516-4CD5-BFE3-8CFF0592F032}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71B7A1B9-6516-4CD5-BFE3-8CFF0592F032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125A6BE1-D62C-4A8D-A680-DDE213C147BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125A6BE1-D62C-4A8D-A680-DDE213C147BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125A6BE1-D62C-4A8D-A680-DDE213C147BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125A6BE1-D62C-4A8D-A680-DDE213C147BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

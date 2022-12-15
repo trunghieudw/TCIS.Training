@@ -10,7 +10,6 @@ namespace TCIS.Training.Class
         {
             Id = 1;
             Name = "Tu lanh";
-            Category category = 0;
             Price = 1000;
             Door = "1 Canh";
         }
@@ -23,10 +22,10 @@ namespace TCIS.Training.Class
             Console.WriteLine($"Tên tủ lạnh: {Name}\nDanh mục: \nGiá Thành: {Price}\nSố cửa: {Door}");
         }
 
-        public double Invoice()
-        {
-            return;
-        }
+        //public double Invoice()
+        //{
+        //    //return;
+        //}
 
     }
 }
