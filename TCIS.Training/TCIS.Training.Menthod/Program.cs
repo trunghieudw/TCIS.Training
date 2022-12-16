@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace TCIS.Training.Menthod
+namespace TCIS.Training.Method
 {
     class Program
     {
