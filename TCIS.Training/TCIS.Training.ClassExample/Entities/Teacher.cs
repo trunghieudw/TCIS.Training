@@ -2,32 +2,20 @@
 
 namespace TCIS.Training.ClassExample
 {
-    public class Teacher : Human
+    public class Teacher : Person
     {
-        public string Specialize { get; set; }
-        public string AcademicLevel { get; set; }
-        public Teacher()
+        public Teacher(int id, string name) 
         {
-            
-
-        }
-        public override void Add()
-        {
-            Console.WriteLine("Nhap thong tin giao vien ");            
-            Console.WriteLine("Chuyen mon: ");
-            Specialize = Console.ReadLine();
-            Console.WriteLine("Trinh do chuyen mon: ");
-            AcademicLevel = Console.ReadLine();
+            Id = id;
+            Name = name;
         }
 
-        public void Print()
-        {
-            Console.WriteLine("Thong tin giao vien");
-            Console.WriteLine($"Ten giao vien {Name}\nTuoi: {Age}\nDia chi: {Address}\nChuyen mon: {Specialize}\nTrinh do chuyen mon: {AcademicLevel}");
+        public int TeachId =>  Id; 
+        public string TeachName =>  Name; 
 
+        public override string ToString()
+        {
+            return $"{Id}-{Name}";
         }
-      
     }
-
-
 }

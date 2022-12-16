@@ -1,15 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TCIS.Training.ClassExample
+﻿namespace TCIS.Training.ClassExample
 {
-    public class Class : IClass
+    public class Class
     {
-        public string Majors { get; set; }     
-        public DateTime   YearTo { get; set; }
+        public int Id { get; set; }     
         public string Name { get; set; }
+        public Teacher Teacher { get; set; }
+
+        public Class(int id, string name, Teacher teacher)
+        {
+            Id = id;
+            Name = name;
+            Teacher = teacher;
+        }
+
+
+        public override string ToString()
+        {
+            return $"{Id}-{Name}-Teacher: {Teacher.TeachId} - {Teacher.TeachName}";
+        }
     }
 }

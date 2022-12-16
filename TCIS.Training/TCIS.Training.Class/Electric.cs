@@ -15,7 +15,13 @@ namespace TCIS.Training.Class
         public enum Category
         {
           DGD,
-          DCN
+          DCN,
+          A =  100,
+          B,
+          C= 10000,
+          D,
+          E,
+          F
         }
     }
 }
