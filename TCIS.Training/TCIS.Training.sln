@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCIS.Training.Namespace", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCIS.Training.Generics", "TCIS.Training.Generics\TCIS.Training.Generics.csproj", "{3FD996DF-E0FD-4233-9C40-DF47F2DA6045}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCIS.Training.RandomNumber", "TCIS.Training.RandomNumber\TCIS.Training.RandomNumber.csproj", "{2141B47E-586C-447C-A552-FBD94E374A14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,12 +61,17 @@ Global
 		{3FD996DF-E0FD-4233-9C40-DF47F2DA6045}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FD996DF-E0FD-4233-9C40-DF47F2DA6045}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FD996DF-E0FD-4233-9C40-DF47F2DA6045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2141B47E-586C-447C-A552-FBD94E374A14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2141B47E-586C-447C-A552-FBD94E374A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2141B47E-586C-447C-A552-FBD94E374A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2141B47E-586C-447C-A552-FBD94E374A14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3FD996DF-E0FD-4233-9C40-DF47F2DA6045} = {AD798EAC-FE41-4A4D-AF13-E462C1D2297E}
+		{2141B47E-586C-447C-A552-FBD94E374A14} = {AD798EAC-FE41-4A4D-AF13-E462C1D2297E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0797346-D507-4CCF-BC1E-39B032BAE978}

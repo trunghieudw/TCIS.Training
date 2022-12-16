@@ -22,6 +22,9 @@ namespace TCIS.Training.ClassExample
             var classes = new List<string> { "12A1", "12A2", "12A3", "12A4", "12A5", "12A6", "12A7" };
             var teacherLastNames = new List<string> { "NGUYEN", "TRAN", "LE", "HOANG", "LY" };
             var teacherFirstNames = new List<string> { "DUNG", "HIEU", "TIEN", "NHAN", "QUAN" };
+            var studentLastNames = new List<string> { "NGUYEN", "TRAN", "LE", "HOANG", "LY", "DINH" };
+            var studentFirstNames = new List<string> { "HIEU", "SON", "NAM", "DUNG", "TIEN", "QUI","KHAI","PHI" };
+            
 
             Teachers = new List<Teacher>();
             Classes = new List<Class>();
@@ -33,7 +36,8 @@ namespace TCIS.Training.ClassExample
 
             for (int i = 0; i < teacherLastNames.Count * teacherLastNames.Count; i++)
             {
-                var newName = $"{teacherLastNames[random.Next(1, teacherLastNames.Count)]} {teacherFirstNames[random.Next(1, teacherFirstNames.Count)]}";
+                var newName = $"{teacherLastNames[random.Next(1, teacherLastNames.Count)]} " +
+                    $"{teacherFirstNames[random.Next(1, teacherFirstNames.Count)]}";
                 Teachers.Add(new Teacher(i + 1, newName));
             }
 
@@ -46,15 +50,23 @@ namespace TCIS.Training.ClassExample
             {
                 Classes.Add(new Class(i + 1, classes[random.Next(1, classes.Count)], Teachers[random.Next(1, Teachers.Count)]));
             }
+
+            for(int i = 0; i < studentLastNames.Count * studentLastNames.Count; i++)
+            {
+                var newName = $"{studentLastNames[random.Next(1, studentLastNames.Count)]} " +
+                    $"{studentFirstNames[random.Next(1, studentFirstNames.Count)]}"; 
+                Students.Add(new Student(i+1, newName));
+            }
+
         }
 
         static void Main(string[] args)
         {
             DummyData();
 
-            foreach (var s in Teachers)
+            foreach (var t in Teachers)
             {
-                Console.WriteLine(s.ToString());
+                Console.WriteLine(t.ToString());
             }
 
             Console.WriteLine("--------------------");
@@ -66,7 +78,13 @@ namespace TCIS.Training.ClassExample
 
             Console.WriteLine("--------------------");
 
-            foreach (var s in Classes)
+            foreach (var c in Classes)
+            {
+                Console.WriteLine(c.ToString());
+            }
+             Console.WriteLine("--------------------");
+
+            foreach (var s in Students)
             {
                 Console.WriteLine(s.ToString());
             }
