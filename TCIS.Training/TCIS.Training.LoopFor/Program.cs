@@ -38,7 +38,6 @@ namespace TCIS.Training.LoopFor
             persons.Add(new Person(3,"Nguyen Van A3"));
             persons.Add(new Person(4,"Nguyen Van A4"));
 
-
             int count =  persons.Count();  
             foreach(var person in persons)
             {
@@ -51,6 +50,7 @@ namespace TCIS.Training.LoopFor
                 Console.Write(person.ToString());
             }
 
+            Console.WriteLine("HieuABC");
             for(int i = count; i>=0; i--)
             {
                 if(i%2==0)
@@ -90,14 +90,14 @@ namespace TCIS.Training.LoopFor
                 Console.Write(ele);
             }
 
-            string [] newArr = new string[len];
+            //string [] newArr = new string[len];
 
-            int newIdx = 0;
-            for(int i = len; i>=0; i--)
-            {
-               newArr[newIdx] = arr[i];
-               newIdx++;
-            }
+            //int newIdx = 0;
+            //for(int i = len; i>=0; i--)
+            //{
+            //   newArr[newIdx] = arr[i];
+            //   newIdx++;
+            //}
 
             /*
                 i = 5
@@ -113,11 +113,11 @@ namespace TCIS.Training.LoopFor
 
             */
             
-            for(int i = 0; i < len; i++ )
-            {
-                var ele = newArr[i] ;
-                Console.Write(ele);
-            }
+            //for(int i = 0; i < len; i++ )
+            //{
+            //    var ele = newArr[i] ;
+            //    Console.Write(ele);
+            //}
 
             // Vòng lặp
             // FOR (<Khởi tạo giá trị đầu cho vòng lặp; Điều kiện lặp; giá trị sau khi thực hiện>)
