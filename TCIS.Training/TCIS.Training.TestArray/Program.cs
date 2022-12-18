@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace TCIS.Training.TestArray
@@ -18,22 +19,35 @@ namespace TCIS.Training.TestArray
         public static void EvenOddArray(int [] array)
         {
             // mang chan mang le
-            Console.WriteLine("In gia tri chan le trong mang");
-            for (int i = 0; i < array.Length; i++)
+            
+           
+            int[] arr2 = new int[array.Length];
+            int[] arr3 = new int [array.Length];
+            int i, j = 0, k = 0;
+            for (i = 0; i < array.Length; i++)
             {
-                if (i % 2 == 0)
+                if (array[i] % 2 == 0)
                 {
-                    var evenarray = array[i];
-
+                    arr2[j] = array[i];
+                    j++;
                 }
-                
+                else
+                {
+                    arr3[k] = array[i];
+                    k++;
+                }
             }
-            Console.WriteLine();
-            //else
-            //{
-            //    var oddarray = array[i];
-            //    Console.WriteLine($"Phan tu le trong mang: {oddarray}");
-            //}
+            Console.WriteLine("\nSố phần tử chẵn trong mảng: ");
+            for (i = 0; i < j; i++)
+            {
+                Console.Write(arr2[i]+" ");
+            }
+            Console.WriteLine("\nSố phần tử lẻ trong mảng: ");
+            for (i = 0; i < k; i++)
+            {
+                Console.Write(arr3[i]+" ");
+            }
+
         }
         public static void FindSecondMinest(int[] array)
         {
@@ -100,13 +114,13 @@ namespace TCIS.Training.TestArray
             {
                 Console.Write(array[i]+ " ");
             }
-            Console.WriteLine("\n\nSắp xếp mảng theo thứ tự tăng dần");
+            Console.WriteLine("\n\n1.Sắp xếp mảng theo thứ tự tăng dần");
             SortArray(array);
-
-
-            Console.WriteLine("\n\nTìm phần tử nhỏ thứ 2 trong mảng");
+            Console.WriteLine("\n\n2.Chia mảng thành 2 mảng chẵn, lẻ");
+            EvenOddArray(array);
+            Console.WriteLine("\n\n3.Tìm phần tử nhỏ thứ 2 trong mảng");
             FindSecondMinest(array);
-            Console.WriteLine("\n\nĐếm số lần xuất hiện của từng phần tử trong mảng");
+            Console.WriteLine("\n\n4.Đếm số lần xuất hiện của từng phần tử trong mảng");
             CountOccurrences(array);
 
 
