@@ -52,32 +52,33 @@ namespace TCIS.Training.TestArray
         public static void FindSecondMinest(int[] array)
         {
             int min, min2;
-            min = min2 = array[0];
-            for (int i = 0; i < array.Length; i++)
+            
+            if (array[0]<array[1])
             {
-                if (array[i] < min)
+                min = array[0];
+                min2 = array[1];    
+            }
+            else
+            {
+                min= array[1];
+                min2= array[0];
+            }
+
+            for (int i = 2; i < array.Length; i++)
+            {
+                if (array[i]<min)
                 {
+                    min2 = min;
                     min = array[i];
                 }
-                else if (array[i] < min2)
-                 {
+                else if (array[i]<min2)
+                {
                     min2 = array[i];
                 }
             }
+            Console.WriteLine($"Phần tử nhỏ thứ nhất trong mảng là: {min}");
+            Console.WriteLine($"Phần tử nhỏ thứ hai trong mảng là: {min2}");
 
-            //for (int i = array.Length ; i <=0 ; i++)
-            //{
-            //    if (array[i]>min)
-            //    {
-            //        min2 = min;
-            //        min = array[i];
-            //    }
-            //    else if (array[i] > min2)
-            //    {
-            //        min2 = array[i];
-            //    }
-            //}
-            Console.WriteLine($"Phan tu nho thu 2 trong mang la: {min2}");
         }
 
         public static void CountOccurrences(int[] array)
@@ -107,7 +108,7 @@ namespace TCIS.Training.TestArray
             Console.Write("BÀI TOÁN XỬ LÝ MẢNG TRONG C#");
             Console.Write("---------------------*---------------------");
 
-            int[] array = { 1, 1,1,12, 3, 4, 5, 12, 31, 123, 123441, 12333,
+            int[] array = { 1,1,12, 3, 4, 5, 12, 31, 123, 123441, 12333,
                 23, 1, 2, 3, 4 };
             Console.WriteLine("\nGiá trị của mảng");
             for (int i = 0; i < array.Length; i++)
