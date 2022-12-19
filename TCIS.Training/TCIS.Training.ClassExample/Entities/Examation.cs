@@ -13,5 +13,18 @@ namespace TCIS.Training.ClassExample.Entities
         public Subject Subject { get; set; }
         public decimal Score { get; set; }
         public DateTime ExamDate { get; set; }
+
+        public Examation(int id, decimal score,Student student, Subject subject)
+        {
+          
+            Id = id; 
+            student.Class = student.
+            Score = score;
+            
+        }
+        public override string ToString()
+        {
+            return $"{Id}-{Score}";
+        }
     }
 }

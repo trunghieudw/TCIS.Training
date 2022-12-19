@@ -13,7 +13,6 @@
             Teacher = teacher;
         }
 
-
         public override string ToString()
         {
             return $"{Id}-{Name}-Teacher: {Teacher.TeachId} - {Teacher.TeachName}";

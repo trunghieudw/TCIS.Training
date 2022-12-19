@@ -8,7 +8,7 @@ namespace TCIS.Training.ClassExample
         public Class Class { get; set; }
         public override string ToString()
         {
-            return $"{Code}-{Name}";
+            return $"{Id}-{Name}";
         }
         public Student(int id, string name)
         {
