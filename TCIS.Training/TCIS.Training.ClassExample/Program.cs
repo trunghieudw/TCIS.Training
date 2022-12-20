@@ -83,13 +83,12 @@ namespace TCIS.Training.ClassExample
                         Subject = Subjects.FirstOrDefault(x => x.Name == mandatorySubjects[j]),
                         Student = Students[i],
                         ExamDate = DateTime.Now,
-                        Score = random.Next(1, 10)            
+                        Score = random.Next(1, 10)          
                                                
                     };
-                    Examations.Add(ex);
-                    if (ex.Score < 3)  ex.Result = "Truot";
+                    Examations.Add(ex);                    
+                    if (ex.Score < 3) ex.Result = "Truot";
                     else ex.Result = "Dau";
-                    
                 }
             }  
             

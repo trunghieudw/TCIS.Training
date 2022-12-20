@@ -11,10 +11,9 @@ namespace TCIS.Training.ClassExample.Entities
         public int Id { get; set; }
         public Student Student { get; set; }
         public Subject Subject { get; set; }
-        public decimal Score { get; set; }
-        public string Result { get; set; }
+        public double Score { get; set; }
         public DateTime ExamDate { get; set; }
-
+        public string Result { get; set; }
      
         public override string ToString()
         {
