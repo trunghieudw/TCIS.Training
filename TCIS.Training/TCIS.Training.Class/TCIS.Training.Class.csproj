@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Faker.cs" />
     <Compile Include="Fridge.cs" />
     <Compile Include="WashingMachine.cs" />
     <Compile Include="Electric.cs" />

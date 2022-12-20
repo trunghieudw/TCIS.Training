@@ -14,6 +14,9 @@ namespace TCIS.Training.Class
         {
             Fridge fridge = new Fridge();
             fridge.Print();
+
+            var data = new Faker<Fridge>();
+            var output = data.Generate(3);
             Console.ReadKey();
         }
     }

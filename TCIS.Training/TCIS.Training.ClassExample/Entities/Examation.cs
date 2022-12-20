@@ -14,17 +14,17 @@ namespace TCIS.Training.ClassExample.Entities
         public decimal Score { get; set; }
         public DateTime ExamDate { get; set; }
 
-        public Examation(int id, decimal score,Student student, Subject subject)
-        {
-          
-            Id = id; 
-            student.Class = student.
-            Score = score;
-            
-        }
+     
         public override string ToString()
         {
-            return $"{Id}-{Score}";
-        }
+            return $"{Id}-{Student.StudentName}-{ExamDate.Day}-{Subject.Name}={Score}";
+        }       
+        //public override string ScoreTest ()
+        //{
+        //    return $"{Id}-{Student.StudentName}-{ExamDate.Day}-{Subject.Name}={Score}";
+        //}
+
+       public string StudentName => Student.StudentName;
+
     }
 }
