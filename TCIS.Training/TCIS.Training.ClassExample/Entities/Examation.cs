@@ -14,15 +14,22 @@ namespace TCIS.Training.ClassExample.Entities
         public double Score { get; set; }
         public DateTime ExamDate { get; set; }
         public string Result { get; set; }
-     
+
+        public string CheckScore()
+        {
+            if (Score < 3)
+            {
+                return Result = "Truot";
+
+            }
+            else 
+                return Result = "Qua";
+        }
+       
         public override string ToString()
         {
-            return $"{Id}-{Student.StudentName}-{ExamDate.Day}-{Subject.Name}={Score}-{Result}";
-        }       
-        //public override string ScoreTest ()
-        //{
-        //    return $"{Id}-{Student.StudentName}-{ExamDate.Day}-{Subject.Name}={Score}";
-        //}
+            return $"{Id}-{Student.StudentName}-{ExamDate.Day}-{Subject.Name}={Score}";
+        }            
 
        public string StudentName => Student.StudentName;
 

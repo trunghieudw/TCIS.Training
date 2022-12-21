@@ -41,14 +41,14 @@ namespace TCIS.Training.LoopFor
             int count =  persons.Count();  
             foreach(var person in persons)
             {
-                Console.Write(person.ToString());
+                Console.Write(persons.ToString());
             };
 
-            for(int i = 1; i <= count; i++)
-            {
-                var person = persons[i] ;
-                Console.Write(person.ToString());
-            }
+            //for(int i = 1; i <= count; i++)
+            //{
+            //    var person = persons[i] ;
+            //    Console.Write(person.ToString());
+            //}
 
             Console.WriteLine("HieuABC");
             for(int i = count; i>=0; i--)
