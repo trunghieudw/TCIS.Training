@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TCIS.Training.ClassExample.DTOs;
 using TCIS.Training.ClassExample.Entities;
 
 namespace TCIS.Training.ClassExample
@@ -15,9 +16,16 @@ namespace TCIS.Training.ClassExample
         static List<StudentClassificationCriteria> StudentClassificationCriterias { get; set; }
         static List<TeacherSalary> TeacherSalarys { get; set; }
         static List<SalaryClassification> SalaryClassifications { get; set; }
-
+        static List<StudentSummaryDTO> StudentSummarys { get; set; }
+        enum StudentClassification
+        {
+            TB,
+            KHA,
+            GIOI
+        }
         static void DummyData()
         {
+            const int studentInClass = 20;
             var mandatorySubjects = new List<string> { "TOAN", "VAN", "ANH" };
             var classes = new List<string> { "12A1", "12A2", "12A3", "12A4", "12A5", "12A6", "12A7" };
             var teacherLastNames = new List<string> { "NGUYEN", "TRAN", "LE", "HOANG", "LY" };
@@ -33,26 +41,29 @@ namespace TCIS.Training.ClassExample
             Subjects = new List<Subject>();
             Students = new List<Student>();
             Examations = new List<Examation>();
-            StudentClassificationCriterias= new List<StudentClassificationCriteria>();
+            StudentClassificationCriterias = new List<StudentClassificationCriteria>();
             TeacherSalarys = new List<TeacherSalary>();
             SalaryClassifications = new List<SalaryClassification>();
+            StudentSummarys = new List<StudentSummaryDTO>();
 
 
             var random = new Random();
+            int classCount = classes.Count();
 
-            for (int i = 0; i < teacherLastNames.Count * teacherLastNames.Count; i++)
+            for (int i = 0; i < classCount; i++)
             {
                 var newName = $"{teacherLastNames[random.Next(1, teacherLastNames.Count)]} " +
                     $"{teacherFirstNames[random.Next(1, teacherFirstNames.Count)]}";
                 Teachers.Add(new Teacher(i + 1, newName));
             }
 
-            for (int i = 0; i < studentLastNames.Count * studentLastNames.Count; i++)
+            for (int i = 0; i < classCount * studentInClass; i++)
             {
                 var newName = $"{studentLastNames[random.Next(1, studentLastNames.Count)]}" + " " +
                     $"{studentMiddleNames[random.Next(1, studentMiddleNames.Count)]}" + " " +
                     $"{studentFirstNames[random.Next(1, studentFirstNames.Count)]}";
-                Students.Add(new Student(i + 1, newName));
+
+                //Students.Add(new Student(i + 1, newName));
             }
 
 
@@ -78,83 +89,70 @@ namespace TCIS.Training.ClassExample
                         Subject = Subjects.FirstOrDefault(x => x.Name == mandatorySubjects[j]),
                         Student = Students[i],
                         ExamDate = DateTime.Now,
-                        Score = random.Next(1, 10)                        
+                        Score = random.Next(1, 10)
                     };
-                    Examations.Add(ex);                      
-                }                
-            }          
-            
+                    Examations.Add(ex);
+                }
+            }
+
+            StudentClassificationCriterias.AddRange(new List<StudentClassificationCriteria>
+            {
+                new StudentClassificationCriteria
+                {
+                    Id = 1,
+                    AvgScoreFrom = 0,
+                    AvgScoreTo = 6.9,
+                    Classification  = StudentClassification.TB.ToString(),
+                },
+                new StudentClassificationCriteria
+                {
+                    Id = 2,
+                    AvgScoreFrom = 7,
+                    AvgScoreTo = 7.9,
+                    Classification  =  StudentClassification.KHA.ToString(),
+                },
+                new StudentClassificationCriteria
+                {
+                    Id = 1,
+                    AvgScoreFrom = 8,
+                    AvgScoreTo = 10,
+                    Classification  =  StudentClassification.GIOI.ToString(),
+                }
+            });
         }
 
         static void Main(string[] args)
         {
             DummyData();
-            #region Test
-            //Console.WriteLine("INFORMATION\n--------------------*-------------------- ");
-            //Console.WriteLine("TEACHERS\n");
-            //foreach (var t in Teachers)
-            //{
-            //    Console.WriteLine(t.ToString());
-            //}
 
-            //Console.WriteLine("--------------------");
+            Console.WriteLine(Students.Count());
+            Console.WriteLine("============");
 
-            //Console.WriteLine("SUBJECTS\n");
-
-            //foreach (var s in Subjects)
-            //{
-            //    Console.WriteLine(s.ToString());
-            //}
-
-            //Console.WriteLine("--------------------");
-
-            //Console.WriteLine("CLASSES\n");
-            //foreach (var c in Classes)
-            //{
-            //    Console.WriteLine(c.ToString());
-            //}
-
-            // Console.WriteLine("--------------------");
-
-            //Console.WriteLine("STUDENTS\n");
-            //foreach (var s in Students)
-            //{
-            //    Console.WriteLine(s.ToString());
-            //}
-            //Console.WriteLine("--------------------");
-
-            //Console.WriteLine("EXAMATIONS\n");
-            //foreach (var s in Examations)
-            //{
-            //    Console.WriteLine(s.ToString());
-            //}
-            //Console.WriteLine("--------------------");
-
-            //Console.WriteLine("EXAMATIONS\n");
-            //foreach (var s in Students)
-            //{
-            //    Console.WriteLine(s.Print());
-            //}
-
-            //foreach (var s in Examations)
-            //{
-            //    Console.WriteLine(s.ToString());
-            //}
-            #endregion
-            //foreach (var s in Students)
-            //{
-
-            //    Console.WriteLine(s.ToString());
-            //}
-            foreach (var s in Examations)
+            foreach (var student in Students)
             {
-                Console.WriteLine(s.ToString());
-                Console.WriteLine(s.CheckScore());
-                Console.WriteLine(s.CheckAVG());
+                var studentExamations = Examations.Where(x => x.Student.StudentId == student.StudentId);
+                if (studentExamations == null)
+                    continue;
+
+                var avgScore = Math.Round(studentExamations.Sum(x => x.Score) / 3,2);
+
+
+                var classification = StudentClassificationCriterias
+                    .FirstOrDefault(x => x.AvgScoreFrom <= avgScore && avgScore <= x.AvgScoreTo)
+                    .Classification;
+
+                StudentSummarys.Add(new StudentSummaryDTO
+                {
+                    Student  = student,
+                    AvgScore = avgScore,
+                    Classification = classification
+                });
             }
-            foreach (var s in StudentClassificationCriterias)
+
+
+            foreach (var summary in StudentSummarys)
             {
-                Console.WriteLine(s.ClassificationStudent());
+                Console.WriteLine(summary.ToString());
             }
 
 

@@ -52,6 +52,7 @@
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\SalaryClassification.cs" />
     <Compile Include="Entities\StudentClassificationCriteria.cs" />
+    <Compile Include="DTOs\StudentSummaryDTO.cs" />
     <Compile Include="Entities\TeacherSalary.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
