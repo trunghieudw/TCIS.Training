@@ -8,13 +8,12 @@ namespace TCIS.Training.ClassExample.DTOs
 {
     public class TeacherSummaryDTO
     {
-        public Teacher Teacher { get; set; }
-        public double AvgScore { get; set; }
+        public Teacher Teacher { get; set; } 
         public string Classification { get; set; }
 
         public override string ToString()
         {
-            return $"{Teacher.TeachId}-{Teacher.TeachName}-{AvgScore}-{Classification}";
+            return $"{Teacher.TeachId}-{Teacher.TeachName}-{Classification}";
         }
     }
 }

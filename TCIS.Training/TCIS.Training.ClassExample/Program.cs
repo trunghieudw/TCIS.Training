@@ -56,16 +56,17 @@ namespace TCIS.Training.ClassExample
 
             var random = new Random();
 
+            //generates data Teacher
             for (int i = 0; i < numberOfClass; i++)
             {
                 Teachers.Add(new Teacher(i + 1, $"NGUYEN VAN {i + 1}"));
             }
-
+            // generates data Class Mỗi giáo viên chỉ chủ nhiệm 1 lớp
             for (int i = 0; i < Teachers.Count(); i++)
             {
                 Classes.Add(new Class(i + 1, $"12A{i + 1}", Teachers[i]));
             }
-
+            // generates data Mỗi lớp có tối thiểu 20 Sinh Viên
             for (int i = 0; i < Classes.Count(); i++)
             {
                 for (int j = 0; j < numberOfStudentInClass; j++)
@@ -78,11 +79,13 @@ namespace TCIS.Training.ClassExample
                 }
             }
 
+            // generates data Môn học 
             for (int i = 0; i < mandatorySubjects.Count; i++)
             {
                 Subjects.Add(new Subject(i + 1, mandatorySubjects[i]));
             }
 
+            // generates data môn học bắt buộc mỗi sinh viên phải có 3 môn học toán văn anh 
             int examationId = 0;
             for (int i = 0; i < Students.Count(); i++)
             {
@@ -100,19 +103,20 @@ namespace TCIS.Training.ClassExample
                 }
             }
 
+            // Xếp loại thành tích học sinh 
             StudentClassificationCriterias.AddRange(new List<StudentClassificationCriteria>
             {
                 new StudentClassificationCriteria
                 {
                     Id = 1,
                     AvgScoreFrom = 0,
-                    AvgScoreTo = 6.9,
+                    AvgScoreTo = 6.4,
                     Classification  = StudentClassification.TB.ToString(),
                 },
                 new StudentClassificationCriteria
                 {
                     Id = 2,
-                    AvgScoreFrom = 7,
+                    AvgScoreFrom = 6.5,
                     AvgScoreTo = 7.9,
                     Classification  =  StudentClassification.KHA.ToString(),
                 },
@@ -124,6 +128,34 @@ namespace TCIS.Training.ClassExample
                     Classification  =  StudentClassification.GIOI.ToString(),
                 }
             });
+
+            // xếp loại thành tích giáo viên
+
+            TeacherClassificationCriterias.AddRange(new List<TeacherClassificationCriteria>
+            {
+                new TeacherClassificationCriteria
+                {
+                    Id = 1,
+                    ResultExamationFrom = 0,
+                    ResultExamationTo  = 5,
+                    Classification  = TeacherClassification.TB.ToString(),
+                },
+                new TeacherClassificationCriteria
+                {
+                    Id = 2,
+                    ResultExamationFrom = 5,
+                    ResultExamationTo = 7.9,
+                    Classification  =  TeacherClassification.KHA.ToString(),
+                },
+                new TeacherClassificationCriteria
+                {
+                    Id = 3,
+                    ResultExamationFrom = 8,
+                    ResultExamationTo = 10,
+                    Classification  =  TeacherClassification.GIOI.ToString(),
+                }
+            });
+
         }
 
         static void Main(string[] args)
@@ -154,33 +186,42 @@ namespace TCIS.Training.ClassExample
                 Console.WriteLine(s.ToString());
             }
 
-            //foreach (var student in Students)
-            //{
-            //    var studentExamations = Examations.Where(x => x.Student.StudentId == student.StudentId);
-            //    if (studentExamations == null)
-            //        continue;
+            foreach (var student in Students)
+            {
+                var studentExamations = Examations.Where(x => x.Student.StudentId == student.StudentId);
+                if (studentExamations == null)
+                    continue;
 
-            //    var avgScore = Math.Round(studentExamations.Sum(x => x.Score) / 3, 2);
+                var avgScore = Math.Round(studentExamations.Sum(x => x.Score) / 3, 2);
 
+                var percent = avgScore / 20 * 100;
 
-            //    var classification = StudentClassificationCriterias
-            //        .FirstOrDefault(x => x.AvgScoreFrom <= avgScore && avgScore <= x.AvgScoreTo)
-            //        .Classification;
+                var classification = StudentClassificationCriterias
+                    .FirstOrDefault(x => x.AvgScoreFrom <= avgScore && avgScore <= x.AvgScoreTo)
+                    .Classification;
 
-            //    StudentSummarys.Add(new StudentSummaryDTO
-            //    {
-            //        Student = student,
-            //        AvgScore = avgScore,
-            //        Classification = classification
-            //    });
-            //}
-            //foreach (var summary in StudentSummarys)
-            //{
-            //    Console.WriteLine(summary.ToString());
-            //}
+                StudentSummarys.Add(new StudentSummaryDTO
+                {
+                    Student = student,
+                    AvgScore = avgScore,
+                    Classification = classification
+                });
 
+            }
+            foreach (var summary in StudentSummarys)
+            {
+                Console.WriteLine(summary.ToString());
+            }
+               
             Console.WriteLine("============");
 
+            foreach (var classes in Classes)
+            {
+                var teacher = Teachers.Where(x => x.TeachId == classes.Teacher.TeachId);
+                if (teacher == null)
+                    continue;
+                var percent = Students.Count()/20*100;               
+            }
 
             Console.ReadKey();
         }
