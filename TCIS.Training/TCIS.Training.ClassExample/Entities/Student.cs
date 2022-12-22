@@ -10,6 +10,13 @@ namespace TCIS.Training.ClassExample
         public int StudentId => Id;
         public string StudentName => Name;
 
+        public Student(int id, string name, Class @class)
+        {
+            Id = id;
+            Name = name;
+            Class = @class;
+        }
+
         public override string ToString()
         {
             return $"{Id}-{Name}";
