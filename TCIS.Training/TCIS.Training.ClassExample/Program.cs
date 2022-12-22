@@ -164,27 +164,27 @@ namespace TCIS.Training.ClassExample
 
             Console.WriteLine("============");
 
-            Console.WriteLine("Teachers = ", Teachers.Count);
-            foreach (var t in Teachers)
-            {
-                Console.WriteLine(t.ToString());
-            }
+            //Console.WriteLine("Teachers = ", Teachers.Count);
+            //foreach (var t in Teachers)
+            //{
+            //    Console.WriteLine(t.ToString());
+            //}
 
 
-            Console.WriteLine("============");
-            Console.WriteLine("Classes = ", Classes.Count);
-            foreach (var c in Classes)
-            {
-                Console.WriteLine(c.ToString());
-            }
+            //Console.WriteLine("============");
+            //Console.WriteLine("Classes = ", Classes.Count);
+            //foreach (var c in Classes)
+            //{
+            //    Console.WriteLine(c.ToString());
+            //}
 
 
-            Console.WriteLine("============");
-            Console.WriteLine("Students = ", Students.Count);
-            foreach (var s in Students)
-            {
-                Console.WriteLine(s.ToString());
-            }
+            //Console.WriteLine("============");
+            //Console.WriteLine("Students = ", Students.Count);
+            //foreach (var s in Students)
+            //{
+            //    Console.WriteLine(s.ToString());
+            //}
 
             foreach (var student in Students)
             {
@@ -193,8 +193,6 @@ namespace TCIS.Training.ClassExample
                     continue;
 
                 var avgScore = Math.Round(studentExamations.Sum(x => x.Score) / 3, 2);
-
-                var percent = avgScore / 20 * 100;
 
                 var classification = StudentClassificationCriterias
                     .FirstOrDefault(x => x.AvgScoreFrom <= avgScore && avgScore <= x.AvgScoreTo)
@@ -208,22 +206,53 @@ namespace TCIS.Training.ClassExample
                 });
 
             }
-            foreach (var summary in StudentSummarys)
-            {
-                Console.WriteLine(summary.ToString());
-            }
-               
-            Console.WriteLine("============");
 
-            foreach (var classes in Classes)
+            //foreach (var summary in StudentSummarys)
+            //{
+            //    Console.WriteLine(summary.ToString());
+            //}
+               
+            //Console.WriteLine("============");
+
+            foreach (var @class in Classes)
             {
-                var teacher = Teachers.Where(x => x.TeachId == classes.Teacher.TeachId);
-                if (teacher == null)
-                    continue;
-                var percent = Students.Count()/20*100;               
+                Console.WriteLine("============");
+                Console.WriteLine($"LOP {@class.Name}");
+
+                var summaryByClass = StudentSummarys.Where(x => x.Student.Class.Id == @class.Id);
+             
+                var totalStudentTB = summaryByClass.Count(x => x.Classification == StudentClassification.TB.ToString());
+                var totalStudentKHA = summaryByClass.Count(x => x.Classification == StudentClassification.KHA.ToString());
+                var totalStudentGIOI = summaryByClass.Count(x => x.Classification == StudentClassification.GIOI.ToString());
+                //==> Rate
+
+                var totalStudentTBPercent = Math.Round((20.0 / totalStudentTB) * 100, 2);
+                var totalStudentKHAPercent = Math.Round((20.0 / totalStudentKHA) * 100, 2);
+                var totalStudentGIOIPercent = Math.Round((20.0 / totalStudentGIOI) * 100, 2);
+
+
+                //foreach (var s in summaryByClass)
+                //{
+                //    Console.WriteLine(s.ToString());
+                //}
+
+                Console.WriteLine("============");
             }
 
             Console.ReadKey();
         }
     }
 }
+
+
+/*
+ * 
+ * 
+ * 
+ * XL Giáo Viên	TB F	TB T	KHA F	KHA T	GIOI F	GIOI T
+    TB	        50	    100	    0	    100	    0	    100
+    KHA	        0	    10	    55	    100	    10	    100
+    GIỎI	        0	    0	    70	    100	    30	    100
+ * 
+ * 
+ */
