@@ -41,7 +41,7 @@ namespace TCIS.Training.ClassExample
             var studentFirstNames = new List<string> { "HIEU", "SON", "NAM", "DUNG", "TIEN", "QUI", "KHAI", "PHI" };
             var middleNames = new List<string> { "VAN", "THANH", "TRUNG", "HOAI", "HOANG" };
             var classification = new List<string> { "GIOI", "KHA", "TRUNG BINH" };
-            //var examationsScore = new List<decimal> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+         
 
             Teachers = new List<Teacher>();
             Classes = new List<Class>();
@@ -59,24 +59,27 @@ namespace TCIS.Training.ClassExample
             var random = new Random();
             int classCount = classes.Count();
 
-            for (int i = 0; i < classCount; i++)
-            {
-                
-                var newName = $"{teacherLastNames[random.Next(1, teacherLastNames.Count)]}" + " " +
-                     $"{middleNames[random.Next(1, middleNames.Count)]}" + " " +
-                     $"{teacherFirstNames[random.Next(1, teacherFirstNames.Count)]}";
-     
-                Classes.Add(new Class(i+1,classes[random.Next(1,classCount)], Teachers.FirstOrDefault(x=>x.TeachName == newName)));
-            }
-
-            
+            #region test
 
             //for (int i = 0; i < classCount * studentInClass; i++)
             //{
-              
-
             //    //Students.Add(new Student(i + 1, newName));
             //}
+            //for (int i = 0; i < classes.Count; i++)
+            //{
+            //    Classes.Add(new Class(i + 1, classes[random.Next(1, classes.Count)], Teachers[random.Next(1, Teachers.Count)]));
+            //}
+            #endregion
+
+            for (int i = 0; i < classCount; i++)
+            {                
+                var newName = $"{teacherLastNames[random.Next(1, teacherLastNames.Count)]}" + " " +
+                     $"{middleNames[random.Next(1, middleNames.Count)]}" + " " +
+                     $"{teacherFirstNames[random.Next(1, teacherFirstNames.Count)]}";
+                
+                Classes.Add(new Class(i+1,classes[random.Next(1,classCount)], Teachers.FirstOrDefault(x=>x.TeachName == newName)));
+            }
+                  
             for (int i = 0; i < classCount * studentInClass; i++)
             {
                 var newName = $"{studentLastNames[random.Next(1, studentLastNames.Count)]}" + " " +
@@ -84,19 +87,13 @@ namespace TCIS.Training.ClassExample
                     $"{studentFirstNames[random.Next(1, studentFirstNames.Count)]}";
 
                 var newClass = $"{Classes[random.Next(1, classes.Count())]}";
-                Students.Add(new Student(i + 1, newName, Students.FirstOrDefault(x=> x.Class.Id == )));
+                //Students.Add(new Student(i + 1, newName, Students.FirstOrDefault(x => x.Class.Id == )));
             }
-
 
             for (int i = 0; i < mandatorySubjects.Count; i++)
             {
                 Subjects.Add(new Subject(i + 1, mandatorySubjects[i]));
             }
-
-            //for (int i = 0; i < classes.Count; i++)
-            //{
-            //    Classes.Add(new Class(i + 1, classes[random.Next(1, classes.Count)], Teachers[random.Next(1, Teachers.Count)]));
-            //}
 
             // dumy 1 sv bắt buộc phai thi 3 mon toan ly anh 
             int examationId = 0;
@@ -170,8 +167,6 @@ namespace TCIS.Training.ClassExample
                     Classification = classification
                 });
             }
-           
-
             foreach (var summary in StudentSummarys)
             {
                 Console.WriteLine(summary.ToString());
