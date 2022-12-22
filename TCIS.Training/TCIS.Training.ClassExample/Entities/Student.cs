@@ -9,17 +9,11 @@ namespace TCIS.Training.ClassExample
 
         public int StudentId => Id;
         public string StudentName => Name;
-      
-        public Student(int id , string name ,Class nameClass)
-        {
-            Id = id;
-            Name = name;
-            Class = nameClass;
-        }
+
         public override string ToString()
         {
             return $"{Id}-{Name}";
         }
-       
+
     }
 }

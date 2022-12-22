@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TCIS.Training.ClassExample.Entities
 {
@@ -22,16 +18,16 @@ namespace TCIS.Training.ClassExample.Entities
                 return Result = "Truot";
 
             }
-            else 
+            else
                 return Result = "Qua";
         }
-       
+
         public override string ToString()
         {
             return $"{Id}-{Student.StudentName}-{ExamDate.Day}-{Subject.Name}={Score}";
-        }            
+        }
 
-       public string StudentName => Student.StudentName;
+        public string StudentName => Student.StudentName;
 
     }
 }

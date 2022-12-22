@@ -9,7 +9,7 @@ namespace TCIS.Training.ClassExample.Entities
     public abstract class SalaryClassification
     {
         public int Id { get; set; }
-        public double Coefficients { get; set; }
+        public double Level { get; set; }
         public double BaseSalary { get; set; }
     }
 }

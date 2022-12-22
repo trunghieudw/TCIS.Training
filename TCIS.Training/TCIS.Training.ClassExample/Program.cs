@@ -18,13 +18,14 @@ namespace TCIS.Training.ClassExample
         static List<TeacherSalary> TeacherSalarys { get; set; }
         static List<SalaryClassification> SalaryClassifications { get; set; }
         static List<StudentSummaryDTO> StudentSummarys { get; set; }
-        static List<TeacherSummaryDTO>TeacherSummarys { get; set; }
+        static List<TeacherSummaryDTO> TeacherSummarys { get; set; }
         enum StudentClassification
         {
             TB,
             KHA,
             GIOI
-        } enum TeacherClassification
+        }
+        enum TeacherClassification
         {
             TB,
             KHA,
@@ -41,7 +42,7 @@ namespace TCIS.Training.ClassExample
             var studentFirstNames = new List<string> { "HIEU", "SON", "NAM", "DUNG", "TIEN", "QUI", "KHAI", "PHI" };
             var middleNames = new List<string> { "VAN", "THANH", "TRUNG", "HOAI", "HOANG" };
             var classification = new List<string> { "GIOI", "KHA", "TRUNG BINH" };
-         
+
 
             Teachers = new List<Teacher>();
             Classes = new List<Class>();
@@ -72,22 +73,22 @@ namespace TCIS.Training.ClassExample
             #endregion
 
             for (int i = 0; i < classCount; i++)
-            {                
+            {
                 var newName = $"{teacherLastNames[random.Next(1, teacherLastNames.Count)]}" + " " +
                      $"{middleNames[random.Next(1, middleNames.Count)]}" + " " +
                      $"{teacherFirstNames[random.Next(1, teacherFirstNames.Count)]}";
-                
-                Classes.Add(new Class(i+1,classes[random.Next(1,classCount)], Teachers.FirstOrDefault(x=>x.TeachName == newName)));
+                Classes.Add(new Class(i + 1, classes[random.Next(1, classCount)], Teachers.FirstOrDefault(x => x.TeachName == newName)));
             }
-                  
+
             for (int i = 0; i < classCount * studentInClass; i++)
             {
                 var newName = $"{studentLastNames[random.Next(1, studentLastNames.Count)]}" + " " +
                     $"{middleNames[random.Next(1, middleNames.Count)]}" + " " +
                     $"{studentFirstNames[random.Next(1, studentFirstNames.Count)]}";
-
-                var newClass = $"{Classes[random.Next(1, classes.Count())]}";
-                //Students.Add(new Student(i + 1, newName, Students.FirstOrDefault(x => x.Class.Id == )));
+                var ex = new Student
+                {
+                   
+                };                
             }
 
             for (int i = 0; i < mandatorySubjects.Count; i++)
@@ -136,8 +137,8 @@ namespace TCIS.Training.ClassExample
                     AvgScoreTo = 10,
                     Classification  =  StudentClassification.GIOI.ToString(),
                 }
-            }); 
-           
+            });
+
         }
 
         static void Main(string[] args)
@@ -153,7 +154,7 @@ namespace TCIS.Training.ClassExample
                 if (studentExamations == null)
                     continue;
 
-                var avgScore = Math.Round(studentExamations.Sum(x => x.Score) / 3,2);
+                var avgScore = Math.Round(studentExamations.Sum(x => x.Score) / 3, 2);
 
 
                 var classification = StudentClassificationCriterias
@@ -162,7 +163,7 @@ namespace TCIS.Training.ClassExample
 
                 StudentSummarys.Add(new StudentSummaryDTO
                 {
-                    Student  = student,
+                    Student = student,
                     AvgScore = avgScore,
                     Classification = classification
                 });
@@ -173,10 +174,7 @@ namespace TCIS.Training.ClassExample
             }
 
             Console.WriteLine("============");
-            foreach (var es in Classes)
-            {
-                Console.WriteLine(es.ToString());
-            }
+            
 
             Console.ReadKey();
         }

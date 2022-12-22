@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TCIS.Training.ClassExample.Entities
+﻿namespace TCIS.Training.ClassExample.Entities
 {
     public class StudentClassificationCriteria
     {
@@ -17,7 +11,7 @@ namespace TCIS.Training.ClassExample.Entities
 
         //public string AvgClassification()
         //{
-            
+
         //    double avg = Examation.Score / 3;
         //    if (avg > AvgScoreTo)
         //    {
@@ -36,7 +30,7 @@ namespace TCIS.Training.ClassExample.Entities
 
         //public string ClassificationStudent()
         //{
-            
+
         //    return $"{Id}-{Student.StudentName}-{Examation.Score}-{Classification}";
 
         //}

@@ -10,7 +10,7 @@ namespace TCIS.Training.ClassExample.Entities
     {
         public int Id { get; set; }
         public Teacher Teacher { get; set; }
-        public int Level { get; set; }
+        public int Coefficients { get; set; }
         
     }
 }
