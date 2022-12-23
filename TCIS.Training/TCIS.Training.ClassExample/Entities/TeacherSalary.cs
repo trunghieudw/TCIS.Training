@@ -11,6 +11,18 @@ namespace TCIS.Training.ClassExample.Entities
         public int Id { get; set; }
         public Teacher Teacher { get; set; }
         public int Coefficients { get; set; }
-        
+
+        //public TeacherSalary(int id, Teacher teacher,int coefficients)
+        //{
+        //    Id = id;
+        //    Teacher = teacher;
+        //    Coefficients = coefficients;            
+        //}
+
+        public override string ToString()
+        {
+            return $"{Id}-{Teacher.TeachName}-Hệ số lương: {Coefficients}";
+        }
+
     }
 }
