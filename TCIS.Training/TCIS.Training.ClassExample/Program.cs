@@ -41,6 +41,7 @@ namespace TCIS.Training.ClassExample
             var studentFirstNames = new List<string> { "HIEU", "SON", "NAM", "DUNG", "TIEN", "QUI", "KHAI", "PHI" };
             var middleNames = new List<string> { "VAN", "THANH", "TRUNG", "HOAI", "HOANG" };
             var classification = new List<string> { "GIOI", "KHA", "TRUNG BINH" };
+            var baseSalaryTeacher = new List<double> { 5000000, 10000000, 15000000 };
 
 
             Teachers = new List<Teacher>();
@@ -289,7 +290,20 @@ namespace TCIS.Training.ClassExample
             foreach (var @class in Classes)
             {
 
-                var summaryByClass = StudentSummarys.Where(x => x.Student.Class.Id == @class.Id);
+            //    var classification = TeacherClassificationCriterias.FirstOrDefault(x => x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo);
+            //    if (classification == null)
+            //    {
+            //        classification = TeacherClassificationCriterias.FirstOrDefault(x =>
+            //                        (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
+            //                        && (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo));
+            //        if (classification == null)
+            //        {
+            //            classification = TeacherClassificationCriterias.FirstOrDefault(x =>
+            //                                (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
+            //                                && ((x.ResultExamationGoodFrom <= totalStudentGoodPercent && totalStudentGoodPercent <= x.ResultExamationGoodTo)
+            //                                || (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo)));
+            //        }
+            //    }
 
 
                 var totalStudentMedium = summaryByClass.Count(x => x.Classification == TeacherClassification.TB.ToString());
@@ -309,13 +323,7 @@ namespace TCIS.Training.ClassExample
                 //Console.WriteLine(totalStudentRatherPercent);
                 //Console.WriteLine(totalStudentGoodPercent);
 
-
-                //var classification = TeacherClassificationCriterias
-                //    .FirstOrDefault(x => x.ResultExamationMedium <= totalStudentMediumPercent && totalStudentMediumPercent < x.ResultExamationRather && totalStudentMediumPercent < x.ResultExamationGood
-                //    && totalStudentRatherPercent >= x.ResultExamationMedium && totalStudentRatherPercent == x.ResultExamationRather && totalStudentRather >= x.ResultExamationGood
-                //    && totalStudentGoodPercent > x.ResultExamationMedium && totalStudentGoodPercent >= x.ResultExamationRather && totalStudentGoodPercent >= x.ResultExamationGood
-                //    )
-                //    .Classification;
+         
 
                 var classification = TeacherClassificationCriterias.FirstOrDefault(x => x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo);
                 if (classification == null)
@@ -347,6 +355,7 @@ namespace TCIS.Training.ClassExample
                 Console.WriteLine($"{classification?.Classification}");
                 Console.WriteLine("================");
             }
+            Console.WriteLine("==============================");
 
             //foreach (var summary in TeacherSummarys)
             //{

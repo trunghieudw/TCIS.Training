@@ -14,7 +14,7 @@ namespace TCIS.Training.ClassExample.Entities
 
         public override string ToString()
         {
-            return $"{Id}-{Level}-Lương cơ bản : {BaseSalary}";
+            return $"{Id}-Cấp bậc: {Level}-Lương cơ bản : {BaseSalary}";
         }
 
     }
