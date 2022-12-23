@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace TCIS.Training.ClassExample.Entities
 {
-   public class TeacherSalary: SalaryClassification
+   public class TeacherSalary//: SalaryClassification
     {
         public int Id { get; set; }
         public Teacher Teacher { get; set; }
+        public int Level { get; set; }
         public int Coefficients { get; set; }
 
         //public TeacherSalary(int id, Teacher teacher,int coefficients)
