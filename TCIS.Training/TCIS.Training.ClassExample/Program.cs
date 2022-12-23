@@ -376,7 +376,7 @@ namespace TCIS.Training.ClassExample
                 var salary = calculateSalary.Coefficients * calculateSalary.BaseSalary;
                 Console.WriteLine($"Tên: {calculateSalary.Teacher.TeachName} - Lương: {salary}");
             }
-
+             
             #endregion
             Console.ReadKey();
         }
