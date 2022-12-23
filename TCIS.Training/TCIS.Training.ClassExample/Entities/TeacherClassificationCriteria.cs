@@ -10,9 +10,12 @@ namespace TCIS.Training.ClassExample
     {
         public int Id { get; set; }
         public string Classification { get; set; }
-        public double ResultExamationMedium { get; set; }
-        public double ResultExamationRather { get; set; }
-        public double ResultExamationGood { get; set; }
+        public double ResultExamationMediumFrom { get; set; }
+        public double ResultExamationMediumTo { get; set; }
+        public double ResultExamationRatherFrom { get; set; }
+        public double ResultExamationRatherTo { get; set; }
+        public double ResultExamationGoodFrom { get; set; }
+        public double ResultExamationGoodTo { get; set; }
         
     }
 }

@@ -97,7 +97,7 @@ namespace TCIS.Training.ClassExample
                         Subject = Subjects.FirstOrDefault(x => x.Name == mandatorySubjects[j]),
                         Student = Students[i],
                         ExamDate = DateTime.Now,
-                        Score = random.Next(1, 10)
+                        Score = random.Next(8, 10)
                     };
                     Examations.Add(ex);
                 }
@@ -137,27 +137,42 @@ namespace TCIS.Training.ClassExample
                 {
                     // Xếp loại TB: Khi lớp số HS trung bình >= 50
                     Id = 1,
-                    ResultExamationMedium = 50,
-                    ResultExamationRather  = 100,
-                    ResultExamationGood  = 100,
+                    ResultExamationMediumFrom = 50,
+                    ResultExamationMediumTo = 100,
+
+                    ResultExamationRatherFrom  = 0,
+                    ResultExamationRatherTo  = 100,
+
+                    ResultExamationGoodFrom  = 0,
+                    ResultExamationGoodTo  = 100,
                     Classification = TeacherClassification.TB.ToString(),
                 },
                 new TeacherClassificationCriteria
                 {
                     // Xếp loại KHA: Khi lớp có sô HS trung bình >= 10% && HS Khá >= 55% && HS Giỏi >= 5% 
                     Id = 2,
-                    ResultExamationMedium = 10,
-                    ResultExamationRather  = 55,
-                    ResultExamationGood  = 5,
+                    ResultExamationMediumFrom = 0,
+                    ResultExamationMediumTo = 10,
+
+                    ResultExamationRatherFrom  = 55,
+                    ResultExamationRatherTo  = 100,
+
+                    ResultExamationGoodFrom  = 10,
+                    ResultExamationGoodTo  = 100,
                     Classification  =  TeacherClassification.KHA.ToString(),
                 },
                 new TeacherClassificationCriteria
                 {
                     // Xếp loại Giỏi: Khi lớp có số HS trung bình == 0 && HS Khá >= 70% HS Giỏi >=30%
                     Id = 3,
-                    ResultExamationMedium = 100,
-                    ResultExamationRather  = 70,
-                    ResultExamationGood  = 30,
+                    ResultExamationMediumFrom = 0,
+                    ResultExamationMediumTo = 0,
+
+                    ResultExamationRatherFrom  = 70,
+                    ResultExamationRatherTo  = 100,
+
+                    ResultExamationGoodFrom  = 30,
+                    ResultExamationGoodTo  = 100,
                     Classification  =  TeacherClassification.GIOI.ToString(),
                 }
             });
@@ -222,10 +237,9 @@ namespace TCIS.Training.ClassExample
 
             foreach (var @class in Classes)
             {
-                Console.WriteLine("============");
-                Console.WriteLine($"LOP {@class.Name}");
 
                 var summaryByClass = StudentSummarys.Where(x => x.Student.Class.Id == @class.Id);
+
 
                 var totalStudentMedium = summaryByClass.Count(x => x.Classification == TeacherClassification.TB.ToString());
                 var totalStudentRather = summaryByClass.Count(x => x.Classification == TeacherClassification.KHA.ToString());
@@ -236,13 +250,13 @@ namespace TCIS.Training.ClassExample
                 var totalStudentRatherPercent = Math.Round(( totalStudentRather/ 20.0) * 100, 2);
                 var totalStudentGoodPercent = Math.Round(( totalStudentGood/ 20.0 ) * 100, 2);
 
-                Console.WriteLine(totalStudentMedium);
-                Console.WriteLine(totalStudentRather);
-                Console.WriteLine(totalStudentGood);
+                //Console.WriteLine(totalStudentMedium);
+                //Console.WriteLine(totalStudentRather);
+                //Console.WriteLine(totalStudentGood);
 
-                Console.WriteLine(totalStudentMediumPercent);
-                Console.WriteLine(totalStudentRatherPercent);
-                Console.WriteLine(totalStudentGoodPercent);
+                //Console.WriteLine(totalStudentMediumPercent);
+                //Console.WriteLine(totalStudentRatherPercent);
+                //Console.WriteLine(totalStudentGoodPercent);
 
 
                 //var classification = TeacherClassificationCriterias
@@ -252,14 +266,35 @@ namespace TCIS.Training.ClassExample
                 //    )
                 //    .Classification;
 
-                var classification = TeacherClassificationCriterias.FirstOrDefault
-                    (x=> x.ResultExamationMedium <= totalStudentMediumPercent && x.ResultExamationRather <=totalStudentRatherPercent && x.ResultExamationGood <= totalStudentGoodPercent).Classification;
-                TeacherSummarys.Add(new TeacherSummaryDTO
+                var classification = TeacherClassificationCriterias.FirstOrDefault(x => x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo);
+                if (classification == null)
                 {
-                    Classification = classification,
-                });
+                    classification = TeacherClassificationCriterias.FirstOrDefault(x =>
+                                    (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
+                                    && (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo));
+                    if (classification == null)
+                    {
+                        classification = TeacherClassificationCriterias.FirstOrDefault(x =>
+                                            (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
+                                            && ((x.ResultExamationGoodFrom <= totalStudentGoodPercent && totalStudentGoodPercent <= x.ResultExamationGoodTo)
+                                            ||(x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo)));
+                    }
+                }
 
-                Console.WriteLine("============");
+
+                //TeacherSummarys.Add(new TeacherSummaryDTO
+                //{
+                //    Teacher  = @class.Teacher,
+                //    Classification = classification,
+                //});
+
+                Console.WriteLine("================");
+                Console.WriteLine($"LOP {@class.Name}");
+                Console.WriteLine("TB = {0}", totalStudentMediumPercent);
+                Console.WriteLine("KHA = {0}", totalStudentRatherPercent);
+                Console.WriteLine("GIOI = {0}", totalStudentGoodPercent);
+                Console.WriteLine($"{classification?.Classification}");
+                Console.WriteLine("================");
             }
 
             foreach (var summary in TeacherSummarys)

@@ -10,7 +10,6 @@ namespace TCIS.Training.ClassExample.DTOs
     {
         public Teacher Teacher { get; set; } 
         public string Classification { get; set; }
-        public Student Student { get; set; }
 
         public override string ToString()
         {
