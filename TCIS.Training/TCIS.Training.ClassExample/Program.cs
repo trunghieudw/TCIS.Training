@@ -135,23 +135,29 @@ namespace TCIS.Training.ClassExample
             {
                 new TeacherClassificationCriteria
                 {
+                    // Xếp loại TB: Khi lớp số HS trung bình >= 50
                     Id = 1,
-                    ResultExamationFrom = 0,
-                    ResultExamationTo  = 5,
-                    Classification  = TeacherClassification.TB.ToString(),
+                    ResultExamationMedium = 50,
+                    ResultExamationRather  = 100,
+                    ResultExamationGood  = 100,
+                    Classification = TeacherClassification.TB.ToString(),
                 },
                 new TeacherClassificationCriteria
                 {
+                    // Xếp loại KHA: Khi lớp có sô HS trung bình >= 10% && HS Khá >= 55% && HS Giỏi >= 5% 
                     Id = 2,
-                    ResultExamationFrom = 5,
-                    ResultExamationTo = 7.9,
+                    ResultExamationMedium = 10,
+                    ResultExamationRather  = 55,
+                    ResultExamationGood  = 5,
                     Classification  =  TeacherClassification.KHA.ToString(),
                 },
                 new TeacherClassificationCriteria
                 {
+                    // Xếp loại Giỏi: Khi lớp có số HS trung bình == 0 && HS Khá >= 70% HS Giỏi >=30%
                     Id = 3,
-                    ResultExamationFrom = 8,
-                    ResultExamationTo = 10,
+                    ResultExamationMedium = 100,
+                    ResultExamationRather  = 70,
+                    ResultExamationGood  = 30,
                     Classification  =  TeacherClassification.GIOI.ToString(),
                 }
             });
@@ -163,7 +169,7 @@ namespace TCIS.Training.ClassExample
             DummyData();
 
             Console.WriteLine("============");
-
+            #region Test
             //Console.WriteLine("Teachers = ", Teachers.Count);
             //foreach (var t in Teachers)
             //{
@@ -186,6 +192,13 @@ namespace TCIS.Training.ClassExample
             //    Console.WriteLine(s.ToString());
             //}
 
+            //foreach (var summary in StudentSummarys)
+            //{
+            //    Console.WriteLine(summary.ToString());
+            //}
+
+            //Console.WriteLine("============");
+            #endregion
             foreach (var student in Students)
             {
                 var studentExamations = Examations.Where(x => x.Student.StudentId == student.StudentId);
@@ -207,38 +220,52 @@ namespace TCIS.Training.ClassExample
 
             }
 
-            //foreach (var summary in StudentSummarys)
-            //{
-            //    Console.WriteLine(summary.ToString());
-            //}
-               
-            //Console.WriteLine("============");
-
             foreach (var @class in Classes)
             {
                 Console.WriteLine("============");
                 Console.WriteLine($"LOP {@class.Name}");
 
                 var summaryByClass = StudentSummarys.Where(x => x.Student.Class.Id == @class.Id);
-             
-                var totalStudentTB = summaryByClass.Count(x => x.Classification == StudentClassification.TB.ToString());
-                var totalStudentKHA = summaryByClass.Count(x => x.Classification == StudentClassification.KHA.ToString());
-                var totalStudentGIOI = summaryByClass.Count(x => x.Classification == StudentClassification.GIOI.ToString());
+
+                var totalStudentMedium = summaryByClass.Count(x => x.Classification == TeacherClassification.TB.ToString());
+                var totalStudentRather = summaryByClass.Count(x => x.Classification == TeacherClassification.KHA.ToString());
+                var totalStudentGood = summaryByClass.Count(x => x.Classification == TeacherClassification.GIOI.ToString());
                 //==> Rate
 
-                var totalStudentTBPercent = Math.Round((20.0 / totalStudentTB) * 100, 2);
-                var totalStudentKHAPercent = Math.Round((20.0 / totalStudentKHA) * 100, 2);
-                var totalStudentGIOIPercent = Math.Round((20.0 / totalStudentGIOI) * 100, 2);
+                var totalStudentMediumPercent = Math.Round(( totalStudentMedium/ 20.0) * 100, 2);
+                var totalStudentRatherPercent = Math.Round(( totalStudentRather/ 20.0) * 100, 2);
+                var totalStudentGoodPercent = Math.Round(( totalStudentGood/ 20.0 ) * 100, 2);
+
+                Console.WriteLine(totalStudentMedium);
+                Console.WriteLine(totalStudentRather);
+                Console.WriteLine(totalStudentGood);
+
+                Console.WriteLine(totalStudentMediumPercent);
+                Console.WriteLine(totalStudentRatherPercent);
+                Console.WriteLine(totalStudentGoodPercent);
 
 
-                //foreach (var s in summaryByClass)
-                //{
-                //    Console.WriteLine(s.ToString());
-                //}
+                //var classification = TeacherClassificationCriterias
+                //    .FirstOrDefault(x => x.ResultExamationMedium <= totalStudentMediumPercent && totalStudentMediumPercent < x.ResultExamationRather && totalStudentMediumPercent < x.ResultExamationGood
+                //    && totalStudentRatherPercent >= x.ResultExamationMedium && totalStudentRatherPercent == x.ResultExamationRather && totalStudentRather >= x.ResultExamationGood
+                //    && totalStudentGoodPercent > x.ResultExamationMedium && totalStudentGoodPercent >= x.ResultExamationRather && totalStudentGoodPercent >= x.ResultExamationGood
+                //    )
+                //    .Classification;
+
+                var classification = TeacherClassificationCriterias.FirstOrDefault
+                    (x=> x.ResultExamationMedium <= totalStudentMediumPercent && x.ResultExamationRather <=totalStudentRatherPercent && x.ResultExamationGood <= totalStudentGoodPercent).Classification;
+                TeacherSummarys.Add(new TeacherSummaryDTO
+                {
+                    Classification = classification,
+                });
 
                 Console.WriteLine("============");
             }
 
+            foreach (var summary in TeacherSummarys)
+            {
+                Console.WriteLine(summary.ToString());
+            }
             Console.ReadKey();
         }
     }
@@ -249,10 +276,10 @@ namespace TCIS.Training.ClassExample
  * 
  * 
  * 
- * XL Giáo Viên	TB F	TB T	KHA F	KHA T	GIOI F	GIOI T
-    TB	        50	    100	    0	    100	    0	    100
-    KHA	        0	    10	    55	    100	    10	    100
-    GIỎI	        0	    0	    70	    100	    30	    100
+    XL Giáo Viên	TB F	TB T	KHA F	KHA T	GIOI F	GIOI T
+    TB	            50	    100	    0	    100	    0	    100
+    KHA	            0	    10	    55	    100	    10	    100
+    GIỎI	            0	    0	    70	    100	    30	    100
  * 
  * 
  */
