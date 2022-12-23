@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace TCIS.Training.ClassExample.Entities
 {
-    public abstract class SalaryClassification
+    public class SalaryClassification
     {
         public int Id { get; set; }
-        public double Level { get; set; }
+        public int Level { get; set; }
         public double BaseSalary { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}-{Level}-Lương cơ bản : {BaseSalary}";
+        }
+
     }
 }

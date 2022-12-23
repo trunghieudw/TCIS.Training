@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using TCIS.Training.ClassExample.DTOs;
 using TCIS.Training.ClassExample.Entities;
 
@@ -40,6 +41,7 @@ namespace TCIS.Training.ClassExample
             var studentFirstNames = new List<string> { "HIEU", "SON", "NAM", "DUNG", "TIEN", "QUI", "KHAI", "PHI" };
             var middleNames = new List<string> { "VAN", "THANH", "TRUNG", "HOAI", "HOANG" };
             var classification = new List<string> { "GIOI", "KHA", "TRUNG BINH" };
+            var baseSalaryTeacher = new List<double> { 5000000, 10000000, 15000000 };
 
 
             Teachers = new List<Teacher>();
@@ -66,6 +68,49 @@ namespace TCIS.Training.ClassExample
             {
                 Classes.Add(new Class(i + 1, $"12A{i + 1}", Teachers[i]));
             }
+            // generates data Hệ số lương giáo viên Teacher Salary
+
+            for (int i = 0; i < Teachers.Count(); i++)
+            {
+                var ex = new TeacherSalary {
+
+                    Id = i + 1,
+                    Teacher = Teachers.FirstOrDefault(x => x.TeachName == $"NGUYEN VAN {i + 1}"),
+                    Coefficients = random.Next(2, 5)
+                };
+
+                TeacherSalarys.Add(ex);
+            }
+            // generates data lương cơ bản giáo viên 
+
+            for (int i = 0; i < TeacherSalarys.Count(); i++)
+            {
+                var rnd = $"{baseSalaryTeacher[random.Next(baseSalaryTeacher.Count)]}";
+                var ex = new SalaryClassification
+                {
+
+                    Id = i + 1,
+                    Level = random.Next(1, 4),
+                    BaseSalary = Convert.ToDouble(rnd)
+                };
+                SalaryClassifications.Add(ex);
+            }
+
+            //for (int i = 0; i < Teachers.Count(); i++)
+            //{
+            //    var ex = new SalaryClassification
+            //    {
+
+            //        Id = i + 1,
+            //        //Teacher = Teachers.FirstOrDefault(x => x.TeachName == $"NGUYEN VAN {i + 1}"),
+            //        Level = random.Next(1, 3),
+            //        BaseSalary = random.Next(baseSalaryTeacher, baseSalaryTeacher.Count)}
+            //    };
+            //    SalaryClassifications.Add(ex);
+
+
+            //}
+
             // generates data Mỗi lớp có tối thiểu 20 Sinh Viên
             for (int i = 0; i < Classes.Count(); i++)
             {
@@ -97,7 +142,7 @@ namespace TCIS.Training.ClassExample
                         Subject = Subjects.FirstOrDefault(x => x.Name == mandatorySubjects[j]),
                         Student = Students[i],
                         ExamDate = DateTime.Now,
-                        Score = random.Next(1, 10)
+                        Score = random.Next(8, 10)
                     };
                     Examations.Add(ex);
                 }
@@ -137,27 +182,42 @@ namespace TCIS.Training.ClassExample
                 {
                     // Xếp loại TB: Khi lớp số HS trung bình >= 50
                     Id = 1,
-                    ResultExamationMedium = 50,
-                    ResultExamationRather  = 100,
-                    ResultExamationGood  = 100,
+                    ResultExamationMediumFrom = 50,
+                    ResultExamationMediumTo = 100,
+
+                    ResultExamationRatherFrom  = 0,
+                    ResultExamationRatherTo  = 100,
+
+                    ResultExamationGoodFrom  = 0,
+                    ResultExamationGoodTo  = 100,
                     Classification = TeacherClassification.TB.ToString(),
                 },
                 new TeacherClassificationCriteria
                 {
                     // Xếp loại KHA: Khi lớp có sô HS trung bình >= 10% && HS Khá >= 55% && HS Giỏi >= 5% 
                     Id = 2,
-                    ResultExamationMedium = 10,
-                    ResultExamationRather  = 55,
-                    ResultExamationGood  = 5,
+                    ResultExamationMediumFrom = 0,
+                    ResultExamationMediumTo = 10,
+
+                    ResultExamationRatherFrom  = 55,
+                    ResultExamationRatherTo  = 100,
+
+                    ResultExamationGoodFrom  = 10,
+                    ResultExamationGoodTo  = 100,
                     Classification  =  TeacherClassification.KHA.ToString(),
                 },
                 new TeacherClassificationCriteria
                 {
                     // Xếp loại Giỏi: Khi lớp có số HS trung bình == 0 && HS Khá >= 70% HS Giỏi >=30%
                     Id = 3,
-                    ResultExamationMedium = 100,
-                    ResultExamationRather  = 70,
-                    ResultExamationGood  = 30,
+                    ResultExamationMediumFrom = 0,
+                    ResultExamationMediumTo = 0,
+
+                    ResultExamationRatherFrom  = 70,
+                    ResultExamationRatherTo  = 100,
+
+                    ResultExamationGoodFrom  = 30,
+                    ResultExamationGoodTo  = 100,
                     Classification  =  TeacherClassification.GIOI.ToString(),
                 }
             });
@@ -167,6 +227,7 @@ namespace TCIS.Training.ClassExample
         static void Main(string[] args)
         {
             DummyData();
+            Console.OutputEncoding = Encoding.UTF8;
 
             Console.WriteLine("============");
             #region Test
@@ -199,50 +260,55 @@ namespace TCIS.Training.ClassExample
 
             //Console.WriteLine("============");
             #endregion
-            foreach (var student in Students)
-            {
-                var studentExamations = Examations.Where(x => x.Student.StudentId == student.StudentId);
-                if (studentExamations == null)
-                    continue;
+            #region Xếp loại học sinh
+            //foreach (var student in Students)
+            //{
+            //    var studentExamations = Examations.Where(x => x.Student.StudentId == student.StudentId);
+            //    if (studentExamations == null)
+            //        continue;
 
-                var avgScore = Math.Round(studentExamations.Sum(x => x.Score) / 3, 2);
+            //    var avgScore = Math.Round(studentExamations.Sum(x => x.Score) / 3, 2);
 
-                var classification = StudentClassificationCriterias
-                    .FirstOrDefault(x => x.AvgScoreFrom <= avgScore && avgScore <= x.AvgScoreTo)
-                    .Classification;
+            //    var classification = StudentClassificationCriterias
+            //        .FirstOrDefault(x => x.AvgScoreFrom <= avgScore && avgScore <= x.AvgScoreTo)
+            //        .Classification;
 
-                StudentSummarys.Add(new StudentSummaryDTO
-                {
-                    Student = student,
-                    AvgScore = avgScore,
-                    Classification = classification
-                });
+            //    StudentSummarys.Add(new StudentSummaryDTO
+            //    {
+            //        Student = student,
+            //        AvgScore = avgScore,
+            //        Classification = classification
+            //    });
 
-            }
-
+            //}
+            //foreach (var summary in StudentSummarys)
+            //{
+            //    Console.WriteLine(summary.ToString());
+            //}
+            #endregion
+            #region Xếp loại thành tích giáo viên
             foreach (var @class in Classes)
             {
-                Console.WriteLine("============");
-                Console.WriteLine($"LOP {@class.Name}");
 
                 var summaryByClass = StudentSummarys.Where(x => x.Student.Class.Id == @class.Id);
+
 
                 var totalStudentMedium = summaryByClass.Count(x => x.Classification == TeacherClassification.TB.ToString());
                 var totalStudentRather = summaryByClass.Count(x => x.Classification == TeacherClassification.KHA.ToString());
                 var totalStudentGood = summaryByClass.Count(x => x.Classification == TeacherClassification.GIOI.ToString());
                 //==> Rate
 
-                var totalStudentMediumPercent = Math.Round(( totalStudentMedium/ 20.0) * 100, 2);
-                var totalStudentRatherPercent = Math.Round(( totalStudentRather/ 20.0) * 100, 2);
-                var totalStudentGoodPercent = Math.Round(( totalStudentGood/ 20.0 ) * 100, 2);
+                var totalStudentMediumPercent = Math.Round((totalStudentMedium / 20.0) * 100, 2);
+                var totalStudentRatherPercent = Math.Round((totalStudentRather / 20.0) * 100, 2);
+                var totalStudentGoodPercent = Math.Round((totalStudentGood / 20.0) * 100, 2);
 
-                Console.WriteLine(totalStudentMedium);
-                Console.WriteLine(totalStudentRather);
-                Console.WriteLine(totalStudentGood);
+                //Console.WriteLine(totalStudentMedium);
+                //Console.WriteLine(totalStudentRather);
+                //Console.WriteLine(totalStudentGood);
 
-                Console.WriteLine(totalStudentMediumPercent);
-                Console.WriteLine(totalStudentRatherPercent);
-                Console.WriteLine(totalStudentGoodPercent);
+                //Console.WriteLine(totalStudentMediumPercent);
+                //Console.WriteLine(totalStudentRatherPercent);
+                //Console.WriteLine(totalStudentGoodPercent);
 
 
                 //var classification = TeacherClassificationCriterias
@@ -252,20 +318,54 @@ namespace TCIS.Training.ClassExample
                 //    )
                 //    .Classification;
 
-                var classification = TeacherClassificationCriterias.FirstOrDefault
-                    (x=> x.ResultExamationMedium <= totalStudentMediumPercent && x.ResultExamationRather <=totalStudentRatherPercent && x.ResultExamationGood <= totalStudentGoodPercent).Classification;
-                TeacherSummarys.Add(new TeacherSummaryDTO
+                var classification = TeacherClassificationCriterias.FirstOrDefault(x => x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo);
+                if (classification == null)
                 {
-                    Classification = classification,
-                });
+                    classification = TeacherClassificationCriterias.FirstOrDefault(x =>
+                                    (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
+                                    && (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo));
+                    if (classification == null)
+                    {
+                        classification = TeacherClassificationCriterias.FirstOrDefault(x =>
+                                            (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
+                                            && ((x.ResultExamationGoodFrom <= totalStudentGoodPercent && totalStudentGoodPercent <= x.ResultExamationGoodTo)
+                                            || (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo)));
+                    }
+                }
 
-                Console.WriteLine("============");
+
+                //TeacherSummarys.Add(new TeacherSummaryDTO
+                //{
+                //    Teacher  = @class.Teacher,
+                //    Classification = classification,
+                //});
+
+                Console.WriteLine("================");
+                Console.WriteLine($"LOP {@class.Name}");
+                Console.WriteLine("TB = {0}", totalStudentMediumPercent);
+                Console.WriteLine("KHA = {0}", totalStudentRatherPercent);
+                Console.WriteLine("GIOI = {0}", totalStudentGoodPercent);
+                Console.WriteLine($"{classification?.Classification}");
+                Console.WriteLine("================");
             }
 
-            foreach (var summary in TeacherSummarys)
+            //foreach (var summary in TeacherSummarys)
+            //{
+            //    Console.WriteLine(summary.ToString());
+            //}
+            #endregion
+
+
+            foreach (var teacherSalary in TeacherSalarys)
             {
-                Console.WriteLine(summary.ToString());
+                Console.WriteLine(teacherSalary.ToString());
             }
+            foreach (var teacherSalaryClassifications in SalaryClassifications)
+            {
+                Console.WriteLine(teacherSalaryClassifications.ToString());
+            }
+
+
             Console.ReadKey();
         }
     }
