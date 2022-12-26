@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace CalculateTheScoresOfTheClasses.Entities
 {
-    public class RatingBoard // bảng xếp loại thi đua
+    public class ClassificationClass
     {
-        public int Id { get; set; }
+        public int Rank { get; } //Xếp hạng
+        public string Classification { get;  } //Xếp loại thi đua
         public ScoreBoard ScoreBoard { get; set; }
-        public string Classification { get; set; }
+
         public string ToString()
         {
-            return $"{Id}-{ScoreBoard.Class}-{Classification}";
+            return $" Xếp hạng: {Rank}- Xếp loại: {Classification} ";
 
         }
     }

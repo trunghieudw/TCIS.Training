@@ -42,12 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\PlusMark.cs" />
-    <Compile Include="Entities\RatingBoard.cs" />
+    <Compile Include="Entities\ClassificationClass.cs" />
     <Compile Include="Entities\ScoreBoard.cs" />
-    <Compile Include="Entities\RedStarSchedule.cs" />
     <Compile Include="Entities\Class.cs" />
-    <Compile Include="Entities\ViolationError.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
