@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CalculateTheScoresOfTheClasses
 {
@@ -10,6 +7,8 @@ namespace CalculateTheScoresOfTheClasses
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
+
         }
     }
 }
