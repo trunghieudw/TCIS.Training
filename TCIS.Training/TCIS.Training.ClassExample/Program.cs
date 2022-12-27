@@ -281,30 +281,30 @@ namespace TCIS.Training.ClassExample
             //Console.WriteLine("============");
             #endregion
             #region Xếp loại học sinh
-            //foreach (var student in Students)
-            //{
-            //    var studentExamations = Examations.Where(x => x.Student.StudentId == student.StudentId);
-            //    if (studentExamations == null)
-            //        continue;
+            foreach (var student in Students)
+            {
+                var studentExamations = Examations.Where(x => x.Student.StudentId == student.StudentId);
+                if (studentExamations == null)
+                    continue;
 
-            //    var avgScore = Math.Round(studentExamations.Sum(x => x.Score) / 3, 2);
+                var avgScore = Math.Round(studentExamations.Sum(x => x.Score) / 3, 2);
 
-            //    var classification = StudentClassificationCriterias
-            //        .FirstOrDefault(x => x.AvgScoreFrom <= avgScore && avgScore <= x.AvgScoreTo)
-            //        .Classification;
+                var classification = StudentClassificationCriterias
+                    .FirstOrDefault(x => x.AvgScoreFrom <= avgScore && avgScore <= x.AvgScoreTo)
+                    .Classification;
 
-            //    StudentSummarys.Add(new StudentSummaryDTO
-            //    {
-            //        Student = student,
-            //        AvgScore = avgScore,
-            //        Classification = classification
-            //    });
+                StudentSummarys.Add(new StudentSummaryDTO
+                {
+                    Student = student,
+                    AvgScore = avgScore,
+                    Classification = classification
+                });
 
-            //}
-            //foreach (var summary in StudentSummarys)
-            //{
-            //    Console.WriteLine(summary.ToString());
-            //}
+            }
+            foreach (var summary in StudentSummarys)
+            {
+                Console.WriteLine(summary.ToString());
+            }
             #endregion
             #region Xếp loại thành tích giáo viên
             foreach (var @class in Classes)

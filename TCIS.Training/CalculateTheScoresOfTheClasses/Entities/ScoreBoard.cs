@@ -9,7 +9,10 @@ namespace CalculateTheScoresOfTheClasses.Entities
     public class ScoreBoard // bảng tổng kết điểm
     {
         public int Id { get; set; }      
-        public Class Class { get; set; } 
+        public Class Class { get; set; }
+        //Thuộc tính tuần tháng
+        public int NumberWeek { get; set; }
+
 
         // thuộc tính tổng điểm
         public double TotalPoint { get; set; } //tính tổng điểm       
@@ -53,21 +56,22 @@ namespace CalculateTheScoresOfTheClasses.Entities
             return $"{Id}-{Class.Name}-Điểm trừ: {ViolationError}-Điểm cộng: {PlusMark}- Tổng điểm: {TotalPoint}";
 
         }        
-        public string Print()
+        public string PrintDummyScore()
         {
-            return            
-                $"\n\n Số: {Id}\t Tên Lớp: {Class.Name}"+
-                "\n==================================================="+ 
-                "\nLỖI VI PHẠM"+            
-                "\n==================================================="+
+            return
+                $"\n============================================******************============================================" +
+                $"\nTuần:{NumberWeek}\t Lớp: {Class.Name}" +
+                "\n===========================================================================================================" +
+                "\n \t\t\t\t\t\tLỖI VI PHẠM" +
+                "\n===========================================================================================================" +
                 $"\nDiHocTre {DiHocTre} \t VaoHocTre {VaoHocTre} \t TronTiet {TronTiet} \t VangCoPhep {VangCoPhep}"+
                 $"\nDiHocTre {KhongDongPhuc} \t MangVietXoa {MangVietXoa} \t TietHocLoaiCD {TietHocLoaiCD}"+
                 $"\nNhuomToc {NhuomToc} \t NoiTucChuiThe {NoiTucChuiThe} \t VoLe {VoLe} \t PhaHoaiTaiSan {PhaHoaiTaiSan}"+
                 $"\nTeNanXaHoi {TeNanXaHoi} \t VeSinhBan {VeSinhBan} \t XaRacBuaBai {XaRacBuaBai} \t MangDTDD {MangDTDD}"+
                 $"\nKhongTatQuatDien {KhongTatQuatDien} \t KhongHoanThanhNiemVu {KhongHoanThanhNiemVu} \t KhongThucHienTotChaoCo {KhongThucHienTotChaoCo}" +
-                "\n===================================================" +
-                "\nCỘNG ĐIỂM LỚP" +
-                "\n===================================================" +
+                "\n===========================================================================================================" +
+                "\n \t\t\t\t\t\tCỘNG ĐIỂM LỚP" +
+                "\n===========================================================================================================" +
                 $"\nTuanHocTot {TuanHocTot} \t NhatDuocCuaRoi {NhatDuocCuaRoi}";
 
         }
