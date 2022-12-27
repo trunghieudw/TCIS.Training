@@ -41,6 +41,7 @@ namespace CalculateTheScoresOfTheClasses.Entities
         public double MangDTDD { get; set; }
         public double KhongTatQuatDien { get; set; }
         public double KhongHoanThanhNiemVu { get; set; }
+        public double BaoLucHocDuong { get; set; }
 
         /// <summary>
         /// Thuộc tính cộng điểm
@@ -68,7 +69,7 @@ namespace CalculateTheScoresOfTheClasses.Entities
                 $"\nDiHocTre {KhongDongPhuc} \t MangVietXoa {MangVietXoa} \t TietHocLoaiCD {TietHocLoaiCD}"+
                 $"\nNhuomToc {NhuomToc} \t NoiTucChuiThe {NoiTucChuiThe} \t VoLe {VoLe} \t PhaHoaiTaiSan {PhaHoaiTaiSan}"+
                 $"\nTeNanXaHoi {TeNanXaHoi} \t VeSinhBan {VeSinhBan} \t XaRacBuaBai {XaRacBuaBai} \t MangDTDD {MangDTDD}"+
-                $"\nKhongTatQuatDien {KhongTatQuatDien} \t KhongHoanThanhNiemVu {KhongHoanThanhNiemVu} \t KhongThucHienTotChaoCo {KhongThucHienTotChaoCo}" +
+                $"\nKhongTatQuatDien {KhongTatQuatDien} \t KhongHoanThanhNiemVu {KhongHoanThanhNiemVu} \t KhongThucHienTotChaoCo {KhongThucHienTotChaoCo} \t BaoLucHocDuong {BaoLucHocDuong}" +
                 "\n===========================================================================================================" +
                 "\n \t\t\t\t\t\tCỘNG ĐIỂM LỚP" +
                 "\n===========================================================================================================" +

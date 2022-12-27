@@ -75,6 +75,7 @@ namespace CalculateTheScoresOfTheClasses
                         MangDTDD = random.Next(-20, 1),
                         KhongTatQuatDien = random.Next(-20, 1),
                         KhongHoanThanhNiemVu = random.Next(-20, 1),
+                        BaoLucHocDuong = random.Next(-20, 1),
 
                         TuanHocTot = random.Next(0, 21),
                         NhatDuocCuaRoi = random.Next(0, 21),                                                                        
@@ -97,6 +98,9 @@ namespace CalculateTheScoresOfTheClasses
                     // Xếp loại XS
                     //Điểm đạt: Trên 100 điểm; Điểm trừ không quá 6 và là điểm trừ vắng có phép
                     Id = 1,
+                    TotalPoint = 100,
+                    ViolationError = -6,
+                    ScoreBoard = ScoreBoards.FirstOrDefault(x=>x.VangCoPhep == 0 ),
 
                     Classification = ClassificationRedStar.XuatSac.ToString(),
                 },
@@ -107,8 +111,11 @@ namespace CalculateTheScoresOfTheClasses
                     //b. Không có trường hợp đánh nhau; không vi phạm các tệ nạn xã hội. 
                     //c.Không có trường hợp trốn học
                     Id = 2,
-
-                    Classification  =  ClassificationRedStar.Manh.ToString(),
+                    TotalPoint = 90,
+                    ViolationError = -10,
+                    ScoreBoard = ScoreBoards.FirstOrDefault(x=>x.TronTiet == 0 && x.TeNanXaHoi ==0 && x.BaoLucHocDuong==0),
+                    
+                    Classification  =  ClassificationRedStar.Manh.ToString()
                 },
                 new ClassificationClass
                 {
@@ -116,6 +123,10 @@ namespace CalculateTheScoresOfTheClasses
                     //a. Điểm đạt: Trên 80 điểm; Điểm trừ không quá 20
                     //b.Không vi phạm mục b của xếp loại mạnh.
                     Id = 3,
+                    TotalPoint = 80,
+                    ViolationError = -20,
+                    ScoreBoard = ScoreBoards.FirstOrDefault(x=> x.TeNanXaHoi ==0 && x.BaoLucHocDuong==0),
+
 
                     Classification  =  ClassificationRedStar.Kha.ToString(),
                 },
@@ -124,7 +135,9 @@ namespace CalculateTheScoresOfTheClasses
                     // Xếp loại TrungBinh
                     // Điểm đạt: Trên 70 điểm ; Điểm trừ không quá 30
                     Id = 4,
-                    
+                    TotalPoint = 70,
+                    ViolationError = -30,                 
+
                     Classification  =  ClassificationRedStar.TrungBinh.ToString(),
                 },
                 new ClassificationClass
@@ -135,7 +148,7 @@ namespace CalculateTheScoresOfTheClasses
 
                     Classification  =  ClassificationRedStar.Yeu.ToString(),
                 }
-            });
+            }); ;
         }
 
         static void Main(string[] args)
