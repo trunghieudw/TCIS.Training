@@ -13,7 +13,7 @@ namespace CalculateTheScoresOfTheClasses.Entities
         //Thuộc tính tuần tháng
         public int NumberWeek { get; set; }
 
-
+       
         // thuộc tính tổng điểm
         public double TotalPoint { get; set; } //tính tổng điểm       
         public double ViolationError { get; set; } //điểm trừ

@@ -29,6 +29,7 @@ namespace CalculateTheScoresOfTheClasses
             var classes = new List<string>{"6A1", "6A2", "6A3", "6A4", "6A5", "6A6",
                 "7A1", "7A2", "7A3", "8A1", "8A2", "8A3", "8A4", "9A1", "9A2", "9A3", "9A4"};
 
+           
             var ClassCount = classes.Count();
             var random = new Random();
             int week = 36; // số tuần học
@@ -51,6 +52,7 @@ namespace CalculateTheScoresOfTheClasses
             {
                 for (int j = 0; j < ClassCount; j++)
                 {
+          
                     var ex = new ScoreBoard
                     {
                         Id = j + 1,
@@ -76,19 +78,20 @@ namespace CalculateTheScoresOfTheClasses
                         KhongTatQuatDien = random.Next(-20, 1),
                         KhongHoanThanhNiemVu = random.Next(-20, 1),
                         BaoLucHocDuong = random.Next(-20, 1),
-
+                        //random điểm cộng
                         TuanHocTot = random.Next(0, 21),
-                        NhatDuocCuaRoi = random.Next(0, 21),                                                                        
+                        NhatDuocCuaRoi = random.Next(0, 21),                     
+
                     };
                     ScoreBoards.Add(ex);
                 }
             }
 
-            //Lấy dữ liệu điểm cộng điểm trừ 
-            //for (int i = 0; i < length; i++)
-            //{
-
-            //}
+            //Lấy dữ liệu điểm cộng điểm trừ
+            for (int i = 0; i < ScoreBoards.Count(); i++)
+            {
+             
+            }
 
             // xếp loại thi đua tuần
             ClassificationClasses.AddRange(new List<ClassificationClass>
@@ -161,14 +164,14 @@ namespace CalculateTheScoresOfTheClasses
             //{
             //    Console.WriteLine(c.ToString());
             //}
-            //Console.WriteLine("===========================================================================================================");
-            //Console.WriteLine("\t\t\t\t\t\tBẢNG ĐIỂM TUẦN");
-            //Console.WriteLine("===========================================================================================================");
+            Console.WriteLine("===========================================================================================================");
+            Console.WriteLine("\t\t\t\t\t\tBẢNG ĐIỂM TUẦN");
+            Console.WriteLine("===========================================================================================================");
 
-            //foreach (var s in ScoreBoards)
-            //{
-            //    Console.WriteLine(s.PrintDummyScore());
-            //}
+            foreach (var s in ScoreBoards)
+            {
+                Console.WriteLine(s.PrintDummyScore());
+            }
 
             #region Tính tổng điểm hàng tuần
             foreach (var scores in ScoreBoards)
