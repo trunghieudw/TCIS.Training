@@ -13,50 +13,50 @@ namespace CalculateTheScoresOfTheClasses.Entities
         //Thuộc tính tuần tháng
         public int NumberWeek { get; set; }
 
-       
-        // thuộc tính tổng điểm
-        public double TotalPoint { get; set; } //tính tổng điểm       
-        public double ViolationError { get; set; } //điểm trừ
-        public double PlusMark { get; set; }//điểm cộng
+
+        //// thuộc tính tổng điểm
+        //public double TotalPoint { get; set; } //tính tổng điểm       
+        //public double ViolationError { get; set; } //điểm trừ
+        //public double PlusMark { get; set; }//điểm cộng
 
 
         /// <summary>
         /// Thuộc tính trừ điểm
         /// </summary>
-        public double DiHocTre { get; set; }
-        public double VaoHocTre { get; set; }
-        public double TronTiet { get; set; }
-        public double VangCoPhep { get; set; }
-        public double KhongDongPhuc { get; set; }
-        public double MangVietXoa { get; set; }
-        public double TietHocLoaiCD { get; set; }
-        public double KhongThucHienTotChaoCo { get; set; }
-        public double NhuomToc { get; set; }
-        public double NoiTucChuiThe { get; set; }
-        public double VoLe { get; set; }
-        public double PhaHoaiTaiSan { get; set; }
-        public double TeNanXaHoi { get; set; }
-        public double VeSinhBan { get; set; }
-        public double XaRacBuaBai { get; set; }
-        public double MangDTDD { get; set; }
-        public double KhongTatQuatDien { get; set; }
-        public double KhongHoanThanhNiemVu { get; set; }
-        public double BaoLucHocDuong { get; set; }
-
-        /// <summary>
+        public int DiHocTre { get; set; }
+        public int VaoHocTre { get; set; }
+        public int TronTiet { get; set; }
+        public int VangCoPhep { get; set; }
+        public int KhongDongPhuc { get; set; }
+        public int MangVietXoa { get; set; }
+        public int TietHocLoaiCD { get; set; }
+        public int KhongThucHienTotChaoCo { get; set; }
+        public int NhuomToc { get; set; }
+        public int NoiTucChuiThe { get; set; }
+        public int VoLe { get; set; }
+        public int PhaHoaiTaiSan { get; set; }
+        public int TeNanXaHoi { get; set; }
+        public int VeSinhBan { get; set; }
+        public int XaRacBuaBai { get; set; }
+        public int MangDTDD { get; set; }
+        public int KhongTatQuatDien { get; set; }
+        public int KhongHoanThanhNiemVu { get; set; }
+        public int BaoLucHocDuong { get; set; }
+           
+       /// <summary>
         /// Thuộc tính cộng điểm
         /// </summary>
         /// <returns></returns>
-        public double TuanHocTot { get; set; }
-        public double NhatDuocCuaRoi { get; set; }
+        public int TuanHocTot { get; set; }
+        public int NhatDuocCuaRoi { get; set; }
 
 
 
-        public string ToString()
-        {
-            return $"{Id}-{Class.Name}-Điểm trừ: {ViolationError}-Điểm cộng: {PlusMark}- Tổng điểm: {TotalPoint}";
+        //public string ToString()
+        //{
+        //    return $"{Id}-{Class.Name}-Điểm trừ: {ViolationError}-Điểm cộng: {PlusMark}- Tổng điểm: {TotalPoint}";
 
-        }        
+        //}        
         public string PrintDummyScore()
         {
             return
@@ -74,7 +74,7 @@ namespace CalculateTheScoresOfTheClasses.Entities
                 "\n \t\t\t\t\t\tCỘNG ĐIỂM LỚP" +
                 "\n===========================================================================================================" +
                 $"\nTuanHocTot {TuanHocTot} \t NhatDuocCuaRoi {NhatDuocCuaRoi}";
-
+                
         }
     }
 }
