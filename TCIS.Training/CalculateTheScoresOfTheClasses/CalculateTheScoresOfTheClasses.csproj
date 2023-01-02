@@ -42,7 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassificationClassesMonth.cs" />
+    <Compile Include="Entities\ClassificationClassesMonth.cs" />
+    <Compile Include="DTOs\ClassificationInWeeksDTO.cs" />
     <Compile Include="Entities\ClassificationClassWeek.cs" />
     <Compile Include="Entities\ScoreBoard.cs" />
     <Compile Include="Entities\Class.cs" />
