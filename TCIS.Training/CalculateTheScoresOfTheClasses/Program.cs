@@ -72,27 +72,26 @@ namespace CalculateTheScoresOfTheClasses
                     {
                         Id = j + 1,
                         Class = Classes.FirstOrDefault(x => x.Name == classes[j]),
-                        NumberWeek = i+1,
+                        NumberWeek = i + 1,
                         // random điểm trừ
-                        DiHocTre = random.Next(-20, 1),
-                        VangCoPhep = random.Next(-20, 1),
-                        VaoHocTre = random.Next(-20, 1),
-                        TronTiet = random.Next(-20, 1),
-                        KhongDongPhuc = random.Next(-20, 1),
-                        MangVietXoa = random.Next(-20, 1),
-                        TietHocLoaiCD = random.Next(-20, 1),
-                        KhongThucHienTotChaoCo = random.Next(-20, 1),
-                        NhuomToc = random.Next(-20, 1),
-                        NoiTucChuiThe = random.Next(-20, 1),
-                        VoLe = random.Next(-20, 1),
-                        PhaHoaiTaiSan = random.Next(-20, 1),
-                        TeNanXaHoi = random.Next(-20, 1),
-                        VeSinhBan = random.Next(-20, 1),
-                        XaRacBuaBai = random.Next(-20, 1),
-                        MangDTDD = random.Next(-20, 1),
-                        KhongTatQuatDien = random.Next(-20, 1),
-                        KhongHoanThanhNiemVu = random.Next(-20, 1),
-                        BaoLucHocDuong = random.Next(-20, 1),
+                        DiHocTre = random.Next(0, 20),
+                        VangCoPhep = random.Next(0, 20),
+                        TronTiet = random.Next(0, 20),
+                        KhongDongPhuc = random.Next(0, 20),
+                        MangVietXoa = random.Next(0, 20),
+                        TietHocLoaiCD = random.Next(0, 20),
+                        KhongThucHienTotChaoCo = random.Next(0, 20),
+                        NhuomToc = random.Next(0, 20),
+                        NoiTucChuiThe = random.Next(0, 20),
+                        VoLe = random.Next(0, 20),
+                        PhaHoaiTaiSan = random.Next(0, 20),
+                        TeNanXaHoi = random.Next(0, 20),
+                        VeSinhBan = random.Next(0, 20),
+                        XaRacBuaBai = random.Next(0, 20),
+                        MangDTDD = random.Next(0, 20),
+                        KhongTatQuatDien = random.Next(0, 20),
+                        KhongHoanThanhNiemVu = random.Next(0, 20),
+                        BaoLucHocDuong = random.Next(0, 20),
                         //random điểm cộng
                         TuanHocTot = random.Next(0, 50),
                         NhatDuocCuaRoi = random.Next(0, 50),
@@ -188,27 +187,22 @@ namespace CalculateTheScoresOfTheClasses
             {
                 new ClassificationClassWeek
                 {
-                    // Xếp loại XS
-                    //Điểm đạt: Trên 100 điểm; Điểm trừ không quá 6 và là điểm trừ vắng có phép
+                    // Xếp loại Yeu
+                    // Các trường hợp còn lại
                     Id = 1,
-                    TotalPoint = 100,
-                    ViolationError = -6,
-                    //ScoreBoard = ScoreBoards.FirstOrDefault(x=>x.VangCoPhep == 0 ),
+                    TotalPoint = 69,
+                    ViolationError = 31,
 
-                    Classification = ClassificationRedStar.XuatSac.ToString(),
-                },
-                new ClassificationClassWeek
+                    Classification  =  ClassificationRedStar.Yeu.ToString(),
+                }, new ClassificationClassWeek
                 {
-                    // Xếp loại Manh
-                    //a. Điểm đạt: Trên 90 điểm; Điểm trừ không quá 10 
-                    //b. Không có trường hợp đánh nhau; không vi phạm các tệ nạn xã hội. 
-                    //c.Không có trường hợp trốn học
+                    // Xếp loại Yeu
+                    // Các trường hợp còn lại
                     Id = 2,
-                    TotalPoint = 90,
-                    ViolationError = -10,
-                    //ScoreBoard = ScoreBoards.FirstOrDefault(x=>x.TronTiet == 0 && x.TeNanXaHoi ==0 && x.BaoLucHocDuong==0),
+                    TotalPoint = 70,
+                    ViolationError = 30,
 
-                    Classification  =  ClassificationRedStar.Manh.ToString()
+                    Classification  =  ClassificationRedStar.TrungBinh.ToString(),
                 },
                 new ClassificationClassWeek
                 {
@@ -217,32 +211,38 @@ namespace CalculateTheScoresOfTheClasses
                     //b.Không vi phạm mục b của xếp loại mạnh.
                     Id = 3,
                     TotalPoint = 80,
-                    ViolationError = -20,
+                    ViolationError = 20,
                     //ScoreBoard = ScoreBoards.FirstOrDefault(x=> x.TeNanXaHoi ==0 && x.BaoLucHocDuong==0),
 
 
                     Classification  =  ClassificationRedStar.Kha.ToString(),
                 },
-                new ClassificationClassWeek
+                 new ClassificationClassWeek
                 {
-                    // Xếp loại TrungBinh
-                    // Điểm đạt: Trên 70 điểm ; Điểm trừ không quá 30
+                    // Xếp loại Manh
+                    //a. Điểm đạt: Trên 90 điểm; Điểm trừ không quá 10 
+                    //b. Không có trường hợp đánh nhau; không vi phạm các tệ nạn xã hội. 
+                    //c.Không có trường hợp trốn học
                     Id = 4,
-                    TotalPoint = 70,
-                    ViolationError = -30,
+                    TotalPoint = 90,
+                    ViolationError = 10,
+                    //ScoreBoard = ScoreBoards.FirstOrDefault(x=>x.TronTiet == 0 && x.TeNanXaHoi ==0 && x.BaoLucHocDuong==0),
 
-                    Classification  =  ClassificationRedStar.TrungBinh.ToString(),
+                    Classification  =  ClassificationRedStar.Manh.ToString()
                 },
                 new ClassificationClassWeek
                 {
-                    // Xếp loại Yeu
-                    // Các trường hợp còn lại
+                    // Xếp loại XS
+                    //Điểm đạt: Trên 100 điểm; Điểm trừ không quá 6 và là điểm trừ vắng có phép
                     Id = 5,
-                    TotalPoint = 69,
-                    ViolationError = -31,
+                    TotalPoint = 100,
+                    ViolationError = 6,
+                    //ScoreBoard = ScoreBoards.FirstOrDefault(x=>x.VangCoPhep == 0 ),
 
-                    Classification  =  ClassificationRedStar.Yeu.ToString(),
-                }
+                    Classification = ClassificationRedStar.XuatSac.ToString()
+                },
+               
+                
             });
             #endregion
 
@@ -353,19 +353,23 @@ namespace CalculateTheScoresOfTheClasses
                 //tính điểm cộng
                 var plusPoints = scoresClass.Sum(x => x.TuanHocTot + x.NhatDuocCuaRoi);
                 // tính tổng điểm
-                var pointWeekOfClass = (weeklyDefaultPoint + plusPoints) + mistakePoints;
-               
+                var pointWeekOfClass = (weeklyDefaultPoint + plusPoints) - mistakePoints;
+
                 // kiểm tra xếp hạng lớp theo tuần
                 var classification = ClassificationClassesWeeks.FirstOrDefault
-                    (x => x.ViolationError >= mistakePoints && x.TotalPoint <= pointWeekOfClass ).Classification;
-
+                    (x => x.ViolationError >= mistakePoints && x.TotalPoint <= pointWeekOfClass);
+                if (classification == null)
+                {
+                    var classification1 = ClassificationClassesWeeks.FirstOrDefault
+                    (x => x.ViolationError >= mistakePoints && x.TotalPoint <= pointWeekOfClass);
+                }
                 ClassificationInWeeksDTOs.Add(new ClassificationInWeeksDTO
                 {
                     ScoreBoard = classificationClassWeek,
                     TotalPoint = pointWeekOfClass,
                     ViolationError = mistakePoints,
                     PlusMark = plusPoints,
-                    Classification = classification
+                    Classification = classification.ToString()
                 });
             }
             foreach (var summary in ClassificationInWeeksDTOs)

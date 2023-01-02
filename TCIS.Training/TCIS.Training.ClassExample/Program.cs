@@ -307,75 +307,75 @@ namespace TCIS.Training.ClassExample
             }
             #endregion
             #region Xếp loại thành tích giáo viên
-            foreach (var @class in Classes)
-            {
-                //var summaryByClass = StudentSummarys.Where(x => x.Student.Class.Id == @class.Id);
+            //foreach (var @class in Classes)
+            //{
+            //    var summaryByClass = StudentSummarys.Where(x => x.Student.Class.Id == @class.Id);
 
-                //var classification = TeacherClassificationCriterias.FirstOrDefault(x => x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo);
-                //if (classification == null)
-                //{
-                //    classification = TeacherClassificationCriterias.FirstOrDefault(x =>
-                //                    (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
-                //                    && (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo));
-                //    if (classification == null)
-                //    {
-                //        classification = TeacherClassificationCriterias.FirstOrDefault(x =>
-                //                            (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
-                //                            && ((x.ResultExamationGoodFrom <= totalStudentGoodPercent && totalStudentGoodPercent <= x.ResultExamationGoodTo)
-                //                            || (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo)));
-                //    }
-                //}
-
-
-                //var totalStudentMedium = summaryByClass.Count(x => x.Classification == TeacherClassification.TB.ToString());
-                //var totalStudentRather = summaryByClass.Count(x => x.Classification == TeacherClassification.KHA.ToString());
-                //var totalStudentGood = summaryByClass.Count(x => x.Classification == TeacherClassification.GIOI.ToString());
-                //==> Rate
-
-                //var totalStudentMediumPercent = Math.Round((totalStudentMedium / 20.0) * 100, 2);
-                //var totalStudentRatherPercent = Math.Round((totalStudentRather / 20.0) * 100, 2);
-                //var totalStudentGoodPercent = Math.Round((totalStudentGood / 20.0) * 100, 2);
-
-                //Console.WriteLine(totalStudentMedium);
-                //Console.WriteLine(totalStudentRather);
-                //Console.WriteLine(totalStudentGood);
-
-                //Console.WriteLine(totalStudentMediumPercent);
-                //Console.WriteLine(totalStudentRatherPercent);
-                //Console.WriteLine(totalStudentGoodPercent);
+            //    var classification = TeacherClassificationCriterias.FirstOrDefault(x => x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo);
+            //    if (classification == null)
+            //    {
+            //        classification = TeacherClassificationCriterias.FirstOrDefault(x =>
+            //                        (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
+            //                        && (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo));
+            //        if (classification == null)
+            //        {
+            //            classification = TeacherClassificationCriterias.FirstOrDefault(x =>
+            //                                (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
+            //                                && ((x.ResultExamationGoodFrom <= totalStudentGoodPercent && totalStudentGoodPercent <= x.ResultExamationGoodTo)
+            //                                || (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo)));
+            //        }
+            //    }
 
 
+            //    var totalStudentMedium = summaryByClass.Count(x => x.Classification == TeacherClassification.TB.ToString());
+            //    var totalStudentRather = summaryByClass.Count(x => x.Classification == TeacherClassification.KHA.ToString());
+            //    var totalStudentGood = summaryByClass.Count(x => x.Classification == TeacherClassification.GIOI.ToString());
+            //    ==> Rate
 
-                //var classification = TeacherClassificationCriterias.FirstOrDefault(x => x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo);
-                //if (classification == null)
-                //{
-                //    classification = TeacherClassificationCriterias.FirstOrDefault(x =>
-                //                    (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
-                //                    && (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo));
-                //    if (classification == null)
-                //    {
-                //        classification = TeacherClassificationCriterias.FirstOrDefault(x =>
-                //                            (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
-                //                            && ((x.ResultExamationGoodFrom <= totalStudentGoodPercent && totalStudentGoodPercent <= x.ResultExamationGoodTo)
-                //                            || (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo)));
-                //    }
-                //}
+            //    var totalStudentMediumPercent = Math.Round((totalStudentMedium / 20.0) * 100, 2);
+            //    var totalStudentRatherPercent = Math.Round((totalStudentRather / 20.0) * 100, 2);
+            //    var totalStudentGoodPercent = Math.Round((totalStudentGood / 20.0) * 100, 2);
+
+            //    Console.WriteLine(totalStudentMedium);
+            //    Console.WriteLine(totalStudentRather);
+            //    Console.WriteLine(totalStudentGood);
+
+            //    Console.WriteLine(totalStudentMediumPercent);
+            //    Console.WriteLine(totalStudentRatherPercent);
+            //    Console.WriteLine(totalStudentGoodPercent);
 
 
-                //TeacherSummarys.Add(new TeacherSummaryDTO
-                //{
-                //    Teacher  = @class.Teacher,
-                //    Classification = classification,
-                //});
 
-                //Console.WriteLine("================");
-                //Console.WriteLine($"LOP {@class.Name}");
-                //Console.WriteLine("TB = {0}", totalStudentMediumPercent);
-                //Console.WriteLine("KHA = {0}", totalStudentRatherPercent);
-                //Console.WriteLine("GIOI = {0}", totalStudentGoodPercent);
-                //Console.WriteLine($"{classification?.Classification}");
-                //Console.WriteLine("================");
-            }
+            //    var classification = TeacherClassificationCriterias.FirstOrDefault(x => x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo);
+            //    if (classification == null)
+            //    {
+            //        classification = TeacherClassificationCriterias.FirstOrDefault(x =>
+            //                        (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
+            //                        && (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo));
+            //        if (classification == null)
+            //        {
+            //            classification = TeacherClassificationCriterias.FirstOrDefault(x =>
+            //                                (x.ResultExamationMediumFrom <= totalStudentMediumPercent && totalStudentMediumPercent <= x.ResultExamationMediumTo)
+            //                                && ((x.ResultExamationGoodFrom <= totalStudentGoodPercent && totalStudentGoodPercent <= x.ResultExamationGoodTo)
+            //                                || (x.ResultExamationRatherFrom <= totalStudentRather && totalStudentRather <= x.ResultExamationRatherTo)));
+            //        }
+            //    }
+
+
+            //    TeacherSummarys.Add(new TeacherSummaryDTO
+            //    {
+            //        Teacher = @class.Teacher,
+            //        Classification = classification,
+            //    });
+
+            //    Console.WriteLine("================");
+            //    Console.WriteLine($"LOP {@class.Name}");
+            //    Console.WriteLine("TB = {0}", totalStudentMediumPercent);
+            //    Console.WriteLine("KHA = {0}", totalStudentRatherPercent);
+            //    Console.WriteLine("GIOI = {0}", totalStudentGoodPercent);
+            //    Console.WriteLine($"{classification?.Classification}");
+            //    Console.WriteLine("================");
+            //}
             //Console.WriteLine("==============================");
 
             //foreach (var summary in TeacherSummarys)
