@@ -12,14 +12,6 @@ namespace CalculateTheScoresOfTheClasses.Entities
         public Class Class { get; set; }
         //Thuộc tính tuần tháng
         public int NumberWeek { get; set; }
-
-
-        //// thuộc tính tổng điểm
-        //public double TotalPoint { get; set; } //tính tổng điểm       
-        //public double ViolationError { get; set; } //điểm trừ
-        //public double PlusMark { get; set; }//điểm cộng
-
-
         /// <summary>
         /// Thuộc tính trừ điểm
         /// </summary>
@@ -51,12 +43,6 @@ namespace CalculateTheScoresOfTheClasses.Entities
         public int NhatDuocCuaRoi { get; set; }
 
 
-
-        //public string ToString()
-        //{
-        //    return $"{Id}-{Class.Name}-Điểm trừ: {ViolationError}-Điểm cộng: {PlusMark}- Tổng điểm: {TotalPoint}";
-
-        //}        
         public string PrintDummyScore()
         {
             return

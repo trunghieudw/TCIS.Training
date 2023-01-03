@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\ClassificationInMonthsDTO.cs" />
     <Compile Include="Entities\ClassificationClassesMonth.cs" />
     <Compile Include="DTOs\ClassificationInWeeksDTO.cs" />
     <Compile Include="Entities\ClassificationClassWeek.cs" />
