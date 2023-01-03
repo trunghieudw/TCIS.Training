@@ -12,6 +12,7 @@ namespace CalculateTheScoresOfTheClasses
         static List<ScoreBoard> ScoreBoards { get; set; }
         static List<ClassificationClassWeek> ClassificationClassesWeeks { get; set; }
         static List<ClassificationInWeeksDTO> ClassificationInWeeksDTOs { get; set; }
+        static List<ClassificationClassesMonth> ClassificationClassesMonths { get; set; }
         static List<ClassificationInMonthsDTO> ClassificationInMonthsDTOs { get; set; }
 
         enum ClassificationRedStar
@@ -29,6 +30,7 @@ namespace CalculateTheScoresOfTheClasses
             ScoreBoards = new List<ScoreBoard>();
             ClassificationClassesWeeks = new List<ClassificationClassWeek>();
             ClassificationInWeeksDTOs = new List<ClassificationInWeeksDTO>();
+            ClassificationClassesMonths = new List<ClassificationClassesMonth>();
             ClassificationInMonthsDTOs = new List<ClassificationInMonthsDTO>();
 
             var classes = new List<string>{"6A1", "6A2", "6A3", "6A4", "6A5", "6A6",
@@ -39,7 +41,7 @@ namespace CalculateTheScoresOfTheClasses
             //"PhaHoaiTaiSan" ,"TeNanXaHoi" ,"VeSinhBan" ,"XaRacBuaBai" ,"MangDTDD" ,"KhongTatQuatDien" ,"KhongHoanThanhNiemVu" ,"BaoLucHocDuong"};
 
 
-            var classCount = classes.Count();
+            var classCount = classes.Count();//16
             var random = new Random();
             int week = 1; // số tuần học
             int month = 4; // số tháng = 1 tuần * 4
@@ -59,54 +61,15 @@ namespace CalculateTheScoresOfTheClasses
             #endregion
 
             #region Generates Data Điểm 1 tuần 
-            for (int i = 0; i < week; i++)
-            {
-                for (int j = 0; j < classCount; j++)
-                {
-                    var weeks = new ScoreBoard
-                    {
-                        Id = j + 1,
-                        Class = Classes.FirstOrDefault(x => x.Name == classes[j]),
-                        NumberWeek = i + 1,
-                        // random điểm trừ
-                        DiHocTre = random.Next(0, 20),
-                        VangCoPhep = random.Next(0, 20),
-                        TronTiet = random.Next(0, 20),
-                        KhongDongPhuc = random.Next(0, 20),
-                        MangVietXoa = random.Next(0, 20),
-                        TietHocLoaiCD = random.Next(0, 20),
-                        KhongThucHienTotChaoCo = random.Next(0, 20),
-                        NhuomToc = random.Next(0, 20),
-                        NoiTucChuiThe = random.Next(0, 20),
-                        VoLe = random.Next(0, 20),
-                        PhaHoaiTaiSan = random.Next(0, 20),
-                        TeNanXaHoi = random.Next(0, 20),
-                        VeSinhBan = random.Next(0, 20),
-                        XaRacBuaBai = random.Next(0, 20),
-                        MangDTDD = random.Next(0, 20),
-                        KhongTatQuatDien = random.Next(0, 20),
-                        KhongHoanThanhNiemVu = random.Next(0, 20),
-                        BaoLucHocDuong = random.Next(0, 20),
-                        //random điểm cộng
-                        TuanHocTot = random.Next(50, 100),
-                        NhatDuocCuaRoi = random.Next(50, 100),
-                    };
-                    ScoreBoards.Add(weeks);
-                }
-            }
-            #endregion
-
-            #region Điểm 1 tháng
-
-            //for (int i = 0; i < month; i++)
+            //for (int i = 0; i < week; i++)
             //{
             //    for (int j = 0; j < classCount; j++)
             //    {
-            //        var months = new ScoreBoard
+            //        var weeks = new ScoreBoard
             //        {
             //            Id = j + 1,
             //            Class = Classes.FirstOrDefault(x => x.Name == classes[j]),
-            //            NumberWeek = i,
+            //            NumberWeek = i + 1,
             //            // random điểm trừ
             //            DiHocTre = random.Next(0, 20),
             //            VangCoPhep = random.Next(0, 20),
@@ -130,15 +93,55 @@ namespace CalculateTheScoresOfTheClasses
             //            TuanHocTot = random.Next(50, 100),
             //            NhatDuocCuaRoi = random.Next(50, 100),
             //        };
-            //        ScoreBoards.Add(months);
+            //        ScoreBoards.Add(weeks);
             //    }
             //}
+            #endregion
+
+            #region Generates data Điểm 1 tháng
+
+            for (int i = 1; i <= month; i++)
+            {
+                for (int j = 0; j < classCount; j++)
+                {
+                    var months = new ScoreBoard
+                    {
+                        Id = j + 1,
+                        Class = Classes.FirstOrDefault(x => x.Name == classes[j]),
+                        NumberWeek = i,
+                        NumberMonth = 1,
+                        // random điểm trừ
+                        DiHocTre = random.Next(0, 20),
+                        VangCoPhep = random.Next(0, 20),
+                        TronTiet = random.Next(0, 20),
+                        KhongDongPhuc = random.Next(0, 20),
+                        MangVietXoa = random.Next(0, 20),
+                        TietHocLoaiCD = random.Next(0, 20),
+                        KhongThucHienTotChaoCo = random.Next(0, 20),
+                        NhuomToc = random.Next(0, 20),
+                        NoiTucChuiThe = random.Next(0, 20),
+                        VoLe = random.Next(0, 20),
+                        PhaHoaiTaiSan = random.Next(0, 20),
+                        TeNanXaHoi = random.Next(0, 20),
+                        VeSinhBan = random.Next(0, 20),
+                        XaRacBuaBai = random.Next(0, 20),
+                        MangDTDD = random.Next(0, 20),
+                        KhongTatQuatDien = random.Next(0, 20),
+                        KhongHoanThanhNiemVu = random.Next(0, 20),
+                        BaoLucHocDuong = random.Next(0, 20),
+                        //random điểm cộng
+                        TuanHocTot = random.Next(50, 100),
+                        NhatDuocCuaRoi = random.Next(50, 100),
+                    };
+                    ScoreBoards.Add(months);
+                }
+            }
             #endregion
 
             #region Điểm 1 năm học = 35 tuần học
             // generates data Điểm 35 tuần = 1 năm học
 
-            //for (int i = 1; i < year; i++)
+            //for (int i = 1; i <= year; i++)
             //{
             //    for (int j = 0; j < classCount; j++)
             //    {
@@ -234,71 +237,66 @@ namespace CalculateTheScoresOfTheClasses
                     //ScoreBoard = ScoreBoards.FirstOrDefault(x=>x.VangCoPhep == 0 ),
 
                     Classification = ClassificationRedStar.XuatSac.ToString()
-                },
-               
+                }              
                 
             });
             #endregion
 
             #region XẾP LOẠI THI ĐUA THÁNG
-            //ClassificationClassesMonths.AddRange(new List<ClassificationClassesMonth>
-            //{
-            //    new ClassificationClassWeek
-            //    {
-            //        // Xếp loại XS
-            //        //Điểm đạt: Trên 100 điểm; Điểm trừ không quá 6 và là điểm trừ vắng có phép
-            //        Id = 1,
-            //        TotalPoint = 100,
-            //        ViolationError = -6,
-            //        ScoreBoard = ScoreBoards.FirstOrDefault(x=>x.VangCoPhep == 0 ),
+            ClassificationClassesMonths.AddRange(new List<ClassificationClassesMonth>
+            {
+                new ClassificationClassesMonth
+                {
+                    // Xếp loại Yeu
+                    // Các trường hợp còn lại
+                    Id = 1,
+                    TotalPoint = 276,
+                    ViolationError = 124,
 
-            //        Classification = ClassificationRedStar.XuatSac.ToString(),
-            //    },
-            //    new ClassificationClassWeek
-            //    {
-            //        // Xếp loại Manh
-            //        //a. Điểm đạt: Trên 90 điểm; Điểm trừ không quá 10 
-            //        //b. Không có trường hợp đánh nhau; không vi phạm các tệ nạn xã hội. 
-            //        //c.Không có trường hợp trốn học
-            //        Id = 2,
-            //        TotalPoint = 90,
-            //        ViolationError = -10,
-            //        ScoreBoard = ScoreBoards.FirstOrDefault(x=>x.TronTiet == 0 && x.TeNanXaHoi ==0 && x.BaoLucHocDuong==0),
+                    Classification  =  ClassificationRedStar.Yeu.ToString(),
+                }, new ClassificationClassesMonth
+                {
+                    // Xếp loại TB
+                    //3 tuần xếp loại Trung bình, còn lại xếp loại Yếu
+                    Id = 2,
+                    TotalPoint = 279,
+                    ViolationError = 121,
 
-            //        Classification  =  ClassificationRedStar.Manh.ToString()
-            //    },
-            //    new ClassificationClass
-            //    {
-            //        // Xếp loại Kha
-            //        //a. Điểm đạt: Trên 80 điểm; Điểm trừ không quá 20
-            //        //b.Không vi phạm mục b của xếp loại mạnh.
-            //        Id = 3,
-            //        TotalPoint = 80,
-            //        ViolationError = -20,
-            //        ScoreBoard = ScoreBoards.FirstOrDefault(x=> x.TeNanXaHoi ==0 && x.BaoLucHocDuong==0),
+                    Classification  =  ClassificationRedStar.TrungBinh.ToString(),
+                },
+                new ClassificationClassesMonth
+                {
+                    // Xếp loại Kha
+                    //3 tuần xếp loại Khá, còn lại xếp loại Trung bình
+                    Id = 3,
+                    TotalPoint = 310,
+                    ViolationError = 90,
+                    //ScoreBoard = ScoreBoards.FirstOrDefault(x=> x.TeNanXaHoi ==0 && x.BaoLucHocDuong==0),
 
+                    Classification  =  ClassificationRedStar.Kha.ToString(),
+                },
+                 new ClassificationClassesMonth
+                {
+                    // Xếp loại Manh
+                   // 3 tuần xếp loại Mạnh, còn lại xếp loại Khá
+                    Id = 4,
+                    TotalPoint = 350,
+                    ViolationError = 50,
 
-            //        Classification  =  ClassificationRedStar.Kha.ToString(),
-            //    },
-            //    new ClassificationClass
-            //    {
-            //        // Xếp loại TrungBinh
-            //        // Điểm đạt: Trên 70 điểm ; Điểm trừ không quá 30
-            //        Id = 4,
-            //        TotalPoint = 70,
-            //        ViolationError = -30,
+                    Classification  =  ClassificationRedStar.Manh.ToString()
+                },
+                new ClassificationClassesMonth
+                {
+                    // Xếp loại XS
+                   // 3 tuần xếp loại Xuất Sắc, còn lại xếp loại Mạnh
+                    Id = 5,
+                    TotalPoint = 390,
+                    ViolationError = 28,
 
-            //        Classification  =  ClassificationRedStar.TrungBinh.ToString(),
-            //    },
-            //    new ClassificationClass
-            //    {
-            //        // Xếp loại Yeu
-            //        // Các trường hợp còn lại
-            //        Id = 5,
+                    Classification = ClassificationRedStar.XuatSac.ToString()
+                }
 
-            //        Classification  =  ClassificationRedStar.Yeu.ToString(),
-            //    }
-            //});
+            });
             #endregion
 
         }
@@ -317,76 +315,16 @@ namespace CalculateTheScoresOfTheClasses
             //}
             #endregion
             #region dummy data bảng điểm tuần            
-            //Console.WriteLine("===========================================================================================================");
-            //Console.WriteLine("\t\t\t\t\t\tBẢNG ĐIỂM TUẦN");
-            //Console.WriteLine("===========================================================================================================");
+            //Console.Write($"===========================================================================================================" +
+            //              $"\n \t\t\t\t\t\tBẢNG ĐIỂM TUẦN" +
+            //              $"\n===========================================================================================================");
 
             //foreach (var s in ScoreBoards)
             //{
-            //    Console.WriteLine(s.PrintDummyScore());
+            //    Console.WriteLine(s.PrintDummyScoreWeek());
             //}
             #endregion
             #region Tính tổng điểm hàng tuần, XẾP LOẠI LỚP
-            foreach (var classificationClassWeek in ScoreBoards)
-            {
-                var scoresClass = ScoreBoards.Where(x => x.Id == classificationClassWeek.Id);
-                if (scoresClass == null)
-                    continue;
-
-                //tính điểm trừ - bỏ bớt điểm trừ ra để nhảy ra kết quả hợp lý
-                var mistakePoints = scoresClass.Sum(x =>
-                x.DiHocTre + x.VaoHocTre
-                + x.TronTiet + x.VangCoPhep
-                //+ x.VangCoPhep + x.BaoLucHocDuong
-                //+ x.KhongDongPhuc + x.MangVietXoa
-                //+ x.TietHocLoaiCD + x.KhongThucHienTotChaoCo
-                //+ x.NhuomToc + x.NoiTucChuiThe
-                //+ x.VoLe + x.PhaHoaiTaiSan
-                //+ x.TeNanXaHoi + x.VeSinhBan
-                //+ x.XaRacBuaBai + x.MangDTDD
-                //+ x.KhongTatQuatDien + x.KhongHoanThanhNiemVu
-                );
-                //tính điểm cộng
-                var plusPoints = scoresClass.Sum(x => x.TuanHocTot + x.NhatDuocCuaRoi);
-                // tính tổng điểm
-                var pointWeekOfClass = (weeklyDefaultPoint + plusPoints) - mistakePoints;
-
-                // kiểm tra xếp hạng lớp theo tuần
-              
-                var classification = ClassificationClassesWeeks.FirstOrDefault
-                    (x => x.TotalPoint <= pointWeekOfClass && x.ViolationError <= mistakePoints).Classification;
-                //if (classification == null)
-                //{
-                //    var classification1 = ClassificationClassesWeeks.FirstOrDefault
-                //    (x => x.ViolationError >= mistakePoints).Classification;
-                //}
-                ClassificationInWeeksDTOs.Add(new ClassificationInWeeksDTO
-                {
-                    ScoreBoard = classificationClassWeek,
-                    TotalPoint = pointWeekOfClass,
-                    ViolationError = mistakePoints,
-                    PlusMark = plusPoints,
-                    Classification = classification
-                });
-            }
-            foreach (var summary in ClassificationInWeeksDTOs)
-            {
-                Console.WriteLine(summary.ToString());
-            }
-            #endregion
-
-            #region Dummy data bảng điểm tháng         
-            //Console.WriteLine("===========================================================================================================");
-            //Console.WriteLine("\t\t\t\t\t\tBẢNG ĐIỂM TUẦN");
-            //Console.WriteLine("===========================================================================================================");
-
-            //foreach (var s in ScoreBoards)
-            //{
-            //    Console.WriteLine(s.PrintDummyScore());
-            //}
-            #endregion
-
-            #region Tính tổng điểm hàng tháng, XẾP LOẠI LỚP
             //foreach (var classificationClassWeek in ScoreBoards)
             //{
             //    var scoresClass = ScoreBoards.Where(x => x.Id == classificationClassWeek.Id);
@@ -412,27 +350,95 @@ namespace CalculateTheScoresOfTheClasses
             //    var pointWeekOfClass = (weeklyDefaultPoint + plusPoints) - mistakePoints;
 
             //    // kiểm tra xếp hạng lớp theo tuần
+
+            //    var classification = ClassificationClassesWeeks.FirstOrDefault
+            //        (x => x.TotalPoint <= pointWeekOfClass && x.ViolationError <= mistakePoints).Classification;
             //    //if (classification == null)
             //    //{
             //    //    var classification1 = ClassificationClassesWeeks.FirstOrDefault
             //    //    (x => x.ViolationError >= mistakePoints).Classification;
             //    //}
-            //    var classification = ClassificationClassesWeeks.FirstOrDefault
-            //        (x => x.TotalPoint <= pointWeekOfClass && x.ViolationError <= mistakePoints).Classification;
-
             //    ClassificationInWeeksDTOs.Add(new ClassificationInWeeksDTO
             //    {
             //        ScoreBoard = classificationClassWeek,
             //        TotalPoint = pointWeekOfClass,
             //        ViolationError = mistakePoints,
             //        PlusMark = plusPoints,
-            //        Classification = classification.ToString()
+            //        Classification = classification
             //    });
             //}
+            //Console.Write($"===========================================================================================================" +
+            //$"\n \t\t\t\t\t\tBẢNG ĐIỂM TUẦN" +
+            //$"\n===========================================================================================================\n");
+
             //foreach (var summary in ClassificationInWeeksDTOs)
             //{
             //    Console.WriteLine(summary.ToString());
             //}
+            #endregion
+
+            #region Dummy data bảng điểm tháng       
+            //Console.Write($"===========================================================================================================" +
+            //$"\n \t\t\t\t\t\tBẢNG ĐIỂM THÁNG" +
+            //$"\n===========================================================================================================\n");
+
+            //foreach (var s in ScoreBoards)
+            //{
+            //    Console.WriteLine(s.PrintDummyScoreMonth());
+            //}
+            #endregion
+
+            #region Tính tổng điểm hàng tháng, XẾP LOẠI LỚP
+            foreach (var classificationClassMonth in ScoreBoards)
+            {
+                var scoresClass = ScoreBoards.Where(x => x.Id == classificationClassMonth.Id);
+                if (scoresClass == null)
+                    continue;
+
+                //tính điểm trừ - bỏ bớt điểm trừ ra để nhảy ra kết quả hợp lý
+                var mistakePoints = scoresClass.Sum(x =>
+                x.DiHocTre + x.VaoHocTre
+                + x.TronTiet + x.VangCoPhep
+                //+ x.VangCoPhep + x.BaoLucHocDuong
+                //+ x.KhongDongPhuc + x.MangVietXoa
+                //+ x.TietHocLoaiCD + x.KhongThucHienTotChaoCo
+                //+ x.NhuomToc + x.NoiTucChuiThe
+                //+ x.VoLe + x.PhaHoaiTaiSan
+                //+ x.TeNanXaHoi + x.VeSinhBan
+                //+ x.XaRacBuaBai + x.MangDTDD
+                //+ x.KhongTatQuatDien + x.KhongHoanThanhNiemVu
+                );
+                //tính điểm cộng
+                var plusPoints = scoresClass.Sum(x => x.TuanHocTot + x.NhatDuocCuaRoi);
+                // tính tổng điểm
+                var pointWeekOfClass = (weeklyDefaultPoint + plusPoints) - mistakePoints;
+
+                // kiểm tra xếp hạng lớp theo tuần
+                //if (classification == null)
+                //{
+                //    var classification1 = ClassificationClassesWeeks.FirstOrDefault
+                //    (x => x.ViolationError >= mistakePoints).Classification;
+                //}
+                var classification = ClassificationClassesMonths.FirstOrDefault
+                    (x => x.TotalPoint <= pointWeekOfClass && x.ViolationError <= mistakePoints).Classification;
+
+                ClassificationInMonthsDTOs.Add(new ClassificationInMonthsDTO
+                {
+                    ScoreBoard = classificationClassMonth,
+                    TotalPoint = pointWeekOfClass,
+                    ViolationError = mistakePoints,
+                    PlusMark = plusPoints,
+                    Classification = classification
+                });
+            }
+            Console.Write($"===========================================================================================================" +
+            $"\n \t\t\t\t\t\tBẢNG XẾP HẠNG THÁNG" +
+            $"\n===========================================================================================================\n");
+
+            foreach (var summary in ClassificationInMonthsDTOs)
+            {
+                Console.WriteLine(summary.ToString());
+            }
             #endregion
 
 
