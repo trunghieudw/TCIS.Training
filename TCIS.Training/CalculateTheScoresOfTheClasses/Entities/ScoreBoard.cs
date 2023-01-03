@@ -62,7 +62,27 @@ namespace CalculateTheScoresOfTheClasses.Entities
                 "\n===========================================================================================================" +
                 $"\nTuanHocTot {TuanHocTot} \t NhatDuocCuaRoi {NhatDuocCuaRoi}";
                 
-        } public string PrintDummyScoreMonth()
+        } 
+        public string PrintDummyScoreMonth()
+        {
+            return
+                $"\n============================================******************============================================" +
+                $"\nTuần:{NumberWeek}\t Tháng:{NumberMonth}\t  Lớp: {Class.Name}" +
+                "\n===========================================================================================================" +
+                "\n \t\t\t\t\t\tLỖI VI PHẠM" +
+                "\n===========================================================================================================" +
+                $"\nDiHocTre {DiHocTre} \t VaoHocTre {VaoHocTre} \t TronTiet {TronTiet} \t VangCoPhep {VangCoPhep}"+
+                $"\nDiHocTre {KhongDongPhuc} \t MangVietXoa {MangVietXoa} \t TietHocLoaiCD {TietHocLoaiCD}"+
+                $"\nNhuomToc {NhuomToc} \t NoiTucChuiThe {NoiTucChuiThe} \t VoLe {VoLe} \t PhaHoaiTaiSan {PhaHoaiTaiSan}"+
+                $"\nTeNanXaHoi {TeNanXaHoi} \t VeSinhBan {VeSinhBan} \t XaRacBuaBai {XaRacBuaBai} \t MangDTDD {MangDTDD}"+
+                $"\nKhongTatQuatDien {KhongTatQuatDien} \t KhongHoanThanhNiemVu {KhongHoanThanhNiemVu} \t KhongThucHienTotChaoCo {KhongThucHienTotChaoCo} \t BaoLucHocDuong {BaoLucHocDuong}" +
+                "\n===========================================================================================================" +
+                "\n \t\t\t\t\t\tCỘNG ĐIỂM LỚP" +
+                "\n===========================================================================================================" +
+                $"\nTuanHocTot {TuanHocTot} \t NhatDuocCuaRoi {NhatDuocCuaRoi}";
+                
+        }
+        public string PrintDummyScoreYear()
         {
             return
                 $"\n============================================******************============================================" +
