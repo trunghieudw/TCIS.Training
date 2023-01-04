@@ -50,6 +50,9 @@
     <Compile Include="Entities\ClassificationClassWeek.cs" />
     <Compile Include="Entities\ScoreBoard.cs" />
     <Compile Include="Entities\Class.cs" />
+    <Compile Include="Entities\Teacher\Person.cs" />
+    <Compile Include="Entities\Teacher\Teacher.cs" />
+    <Compile Include="Entities\Teacher\TeacherManage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
