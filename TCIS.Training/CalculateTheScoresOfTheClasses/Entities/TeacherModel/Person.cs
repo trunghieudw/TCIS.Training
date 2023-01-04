@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CalculateTheScoresOfTheClasses.Entities.TeacherA
+namespace CalculateTheScoresOfTheClasses.Entities.TeacherModel
 {
     public abstract class Person
     {

@@ -50,12 +50,12 @@
     <Compile Include="Entities\ClassificationClassWeek.cs" />
     <Compile Include="Entities\ScoreBoard.cs" />
     <Compile Include="Entities\Class.cs" />
-    <Compile Include="Entities\TeacherA\AssistantHeadTeacher.cs" />
-    <Compile Include="Entities\TeacherA\HeadTeacher.cs" />
-    <Compile Include="Entities\TeacherA\HomeroomTeacher.cs" />
-    <Compile Include="Entities\TeacherA\Person.cs" />
-    <Compile Include="Entities\TeacherA\Teacher.cs" />
-    <Compile Include="Entities\TeacherA\TeacherManage.cs" />
+    <Compile Include="Entities\TeacherModel\AssistantHeadTeacher.cs" />
+    <Compile Include="Entities\TeacherModel\HeadTeacher.cs" />
+    <Compile Include="Entities\TeacherModel\HomeroomTeacher.cs" />
+    <Compile Include="Entities\TeacherModel\Person.cs" />
+    <Compile Include="Entities\TeacherModel\Teacher.cs" />
+    <Compile Include="Entities\TeacherModel\TeacherManage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

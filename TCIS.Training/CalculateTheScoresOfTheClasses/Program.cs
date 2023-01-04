@@ -1,5 +1,5 @@
 ﻿using CalculateTheScoresOfTheClasses.Entities;
-using CalculateTheScoresOfTheClasses.Entities.Teacher;
+using CalculateTheScoresOfTheClasses.Entities.TeacherModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +17,7 @@ namespace CalculateTheScoresOfTheClasses
         static List<ClassificationInMonthsDTO> ClassificationInMonthsDTOs { get; set; }  
         static List<ClassificationClassesYear> ClassificationClassesYears { get; set; }
         static List<ClassificationInYearsDTO> ClassificationInYearsDTOs { get; set; }
+        static List<HomeroomTeacher> HomeroomTeachers { get; set; }
         static List<Teacher> Teachers { get; set; }
 
 
@@ -39,6 +40,7 @@ namespace CalculateTheScoresOfTheClasses
             ClassificationInMonthsDTOs = new List<ClassificationInMonthsDTO>();
             ClassificationClassesYears = new List<ClassificationClassesYear>();
             ClassificationInYearsDTOs = new List<ClassificationInYearsDTO>();
+            HomeroomTeachers = new List<HomeroomTeacher>();
             Teachers = new List<Teacher>();
 
             var classes = new List<string>{"6A1", "6A2", "6A3", "6A4", "6A5", "6A6",
@@ -59,21 +61,21 @@ namespace CalculateTheScoresOfTheClasses
             #region Generates data GVCN
             for (int i = 0; i < classCount; i++)
             {
-                Teachers.Add(new Teacher(i + 1, $"Nguyen Van {i + 1}"));
+                HomeroomTeachers.Add(new HomeroomTeacher(i + 1, $"Nguyen Van {i + 1}"));
             }
             #endregion
 
 
             #region Generates data Class danh sách lớp
-            for (int i = 0; i < classCount; i++)
-            {
-                var ex = new Class
-                {
-                    Id = i + 1,
-                    Name = classes[i]
-                };
-                Classes.Add(ex);
-            }
+            //for (int i = 0; i < classCount; i++)
+            //{
+            //    var ex = new Class
+            //    {
+            //        Id = i + 1,
+            //        Name = classes[i]
+            //    };
+            //    Classes.Add(ex);
+            //}
             #endregion
 
             #region Generates Data Điểm 1 tuần 
@@ -579,12 +581,13 @@ namespace CalculateTheScoresOfTheClasses
             #endregion
 
             #region Dummy data GVCN
-            foreach (var t in Teachers)
+            foreach (var t in HomeroomTeachers)
             {
                 Console.WriteLine(t.ToString());
             }
 
             #endregion  
+
 
             Console.ReadKey();
 
