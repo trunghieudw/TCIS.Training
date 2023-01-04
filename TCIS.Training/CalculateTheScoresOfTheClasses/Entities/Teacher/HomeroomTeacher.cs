@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace CalculateTheScoresOfTheClasses.Entities.Teacher
 {
-    public abstract class Person
+    public class HomeroomTeacher :Teacher
     {
-        protected int Id { get; set; }
-        protected string Name { get; set; }
+        public HomeroomTeacher(int id, string name) : base(id, name)
+        {
+        }
 
+        
     }
 }

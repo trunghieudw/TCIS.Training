@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace CalculateTheScoresOfTheClasses.Entities.Teacher
 {
-    public abstract class Person
+    public class AssistantHeadTeacher: TeacherManage
     {
-        protected int Id { get; set; }
-        protected string Name { get; set; }
+        public AssistantHeadTeacher(int id, string name) : base(id, name)
+        {
+        }
 
     }
 }

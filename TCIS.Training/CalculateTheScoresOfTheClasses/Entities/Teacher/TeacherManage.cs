@@ -8,6 +8,12 @@ namespace CalculateTheScoresOfTheClasses.Entities.Teacher
 {
     public class TeacherManage : Teacher
     {
-        public 
+        public TeacherManage(int id, string name) : base(id, name)
+        {
+        }     
+
+        protected double ManagementAllowance { get; set; } //phụ cấp quản lý
+
+     
     }
 }

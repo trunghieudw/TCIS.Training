@@ -1,4 +1,5 @@
 ﻿using CalculateTheScoresOfTheClasses.Entities;
+using CalculateTheScoresOfTheClasses.Entities.Teacher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace CalculateTheScoresOfTheClasses
         static List<ClassificationInMonthsDTO> ClassificationInMonthsDTOs { get; set; }  
         static List<ClassificationClassesYear> ClassificationClassesYears { get; set; }
         static List<ClassificationInYearsDTO> ClassificationInYearsDTOs { get; set; }
+        static List<Teacher> Teachers { get; set; }
 
 
         enum ClassificationRedStar
@@ -37,6 +39,7 @@ namespace CalculateTheScoresOfTheClasses
             ClassificationInMonthsDTOs = new List<ClassificationInMonthsDTO>();
             ClassificationClassesYears = new List<ClassificationClassesYear>();
             ClassificationInYearsDTOs = new List<ClassificationInYearsDTO>();
+            Teachers = new List<Teacher>();
 
             var classes = new List<string>{"6A1", "6A2", "6A3", "6A4", "6A5", "6A6",
                 "7A1", "7A2", "7A3", "8A1", "8A2", "8A3", "8A4", "9A1", "9A2", "9A3", "9A4"};
@@ -51,7 +54,15 @@ namespace CalculateTheScoresOfTheClasses
             int week = 1; // số tuần học
             int month = 4; // số tháng = 1 tuần * 4
             int year = 35; // số tuần học của 1 năm học = 35 tuần            
-            //int violationErrorCount= violationError.Count();
+                           //int violationErrorCount= violationError.Count();
+
+            #region Generates data GVCN
+            for (int i = 0; i < classCount; i++)
+            {
+                Teachers.Add(new Teacher(i + 1, $"Nguyen Van {i + 1}"));
+            }
+            #endregion
+
 
             #region Generates data Class danh sách lớp
             for (int i = 0; i < classCount; i++)
@@ -374,7 +385,7 @@ namespace CalculateTheScoresOfTheClasses
             //    Console.WriteLine(c.ToString());
             //}
             #endregion
-            
+
             #region Dummy data bảng điểm tuần            
             //Console.Write($"===========================================================================================================" +
             //              $"\n \t\t\t\t\t\tBẢNG ĐIỂM TUẦN" +
@@ -566,6 +577,14 @@ namespace CalculateTheScoresOfTheClasses
             //    Console.WriteLine(summary.ToString());
             //}
             #endregion
+
+            #region Dummy data GVCN
+            foreach (var t in Teachers)
+            {
+                Console.WriteLine(t.ToString());
+            }
+
+            #endregion  
 
             Console.ReadKey();
 

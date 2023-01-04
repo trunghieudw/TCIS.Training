@@ -17,11 +17,18 @@ namespace CalculateTheScoresOfTheClasses.Entities.Teacher
         public int TeachId => Id;
         public string TeachName => Name;
 
-        public int Coefficient { get; set; }// hệ số
-        public double Allowance { get; set; }// phụ cấp
+        public Class Class { get; set; }
+        //public int Coefficient { get; set; }// hệ số
+        //public double Allowance { get; set; }// phụ cấp
+
         public override string ToString()
         {
-            return $"{Id}-{Name}-{Coefficient}-{Allowance}";
+            return $"{Id}-{Name}";
         }
+        //public string TeacherCoefficient()
+        //{
+        //    return $"{Id}-{Name}-{Coefficient}-{Allowance}";
+        //}
+
     }
 }
