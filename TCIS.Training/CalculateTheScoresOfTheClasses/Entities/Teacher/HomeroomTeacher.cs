@@ -12,6 +12,6 @@ namespace CalculateTheScoresOfTheClasses.Entities.Teacher
         {
         }
 
-        
+        public Class Class { get; set; }
     }
 }
