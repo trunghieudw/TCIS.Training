@@ -18,6 +18,8 @@ namespace CalculateTheScoresOfTheClasses
         static List<ClassificationClassesYear> ClassificationClassesYears { get; set; }
         static List<ClassificationInYearsDTO> ClassificationInYearsDTOs { get; set; }
         static List<HomeroomTeacher> HomeroomTeachers { get; set; }
+        static List<HeadTeacher> HeadTeachers { get; set; }
+        static List<AssistantHeadTeacher> AssistantHeadTeachers { get; set; }
         static List<Teacher> Teachers { get; set; }
 
 
@@ -41,10 +43,12 @@ namespace CalculateTheScoresOfTheClasses
             ClassificationClassesYears = new List<ClassificationClassesYear>();
             ClassificationInYearsDTOs = new List<ClassificationInYearsDTO>();
             HomeroomTeachers = new List<HomeroomTeacher>();
+            HeadTeachers = new List<HeadTeacher>();
+            AssistantHeadTeachers = new List<AssistantHeadTeacher>();
             Teachers = new List<Teacher>();
 
             var classes = new List<string>{"6A1", "6A2", "6A3", "6A4", "6A5", "6A6",
-                "7A1", "7A2", "7A3", "8A1", "8A2", "8A3", "8A4", "9A1", "9A2", "9A3", "9A4"};         
+                "7A1", "7A2", "7A3", "8A1", "8A2", "8A3", "8A4", "9A1", "9A2", "9A3", "9A4"};
 
             var classCount = classes.Count();//16
             var random = new Random();
@@ -65,11 +69,11 @@ namespace CalculateTheScoresOfTheClasses
             #endregion
 
             #region Generates data GVCN PrintInfoSalaryTeacher
-            for (int i = 0; i <= classCount ; i++)
+            for (int i = 0; i <= classCount; i++)
             {
                 HomeroomTeachers.Add(new HomeroomTeacher(
-                    i+1,
-                    $"Nguyen Van {i+1}",
+                    i + 1,
+                    $"Nguyen Van {i + 1}",
                     1,
                     5000000,
                     1,
@@ -79,6 +83,37 @@ namespace CalculateTheScoresOfTheClasses
 
             #endregion
 
+            #region  Generates data HeadTeacher PrintInfoSalaryTeacher
+
+            for (int i = 0; i < 1; i++)
+            {
+                HeadTeachers.Add(new HeadTeacher(
+                    i + 1,
+                    $"Nguyễn Văn Hiệu Trưởng",
+                    3,
+                    5000000,
+                    3,
+                    15000000,
+                    7000000
+                    ));
+            }
+
+            #endregion
+
+            #region Generates data AsitantHeadTeacher PrintInfoSalaryTeacher
+            for (int i = 0; i < 1; i++)
+            {
+                AssistantHeadTeachers.Add(new AssistantHeadTeacher(
+                    i + 1,
+                    $"Nguyễn Văn Hiệu Phó",
+                    2,
+                    4000000,
+                    2,
+                    10000000,
+                    4000000
+                    ));
+            }
+            #endregion
 
             #region Generates data Class danh sách lớp
             //for (int i = 0; i < classCount; i++)
@@ -601,13 +636,49 @@ namespace CalculateTheScoresOfTheClasses
             }
             foreach (var t in HomeroomTeachers)
             {
-                Console.WriteLine("=================================");
-                Console.WriteLine(t.PrintInfoSalaryTeacher());                
+                Console.WriteLine("=========================================================");
+                Console.WriteLine("\t========BẢNG TÍNH LƯƠNG GVCN========");
+                Console.WriteLine("=========================================================");
+
+                Console.WriteLine(t.PrintInfoSalaryTeacher());
                 Console.Write("Lương:\t");
                 Console.WriteLine(t.CalculateSalary());
-            }           
+            }
             #endregion
 
+            #region Dummy data & tính lương hiệu trưởng
+
+            //foreach (var t in HeadTeachers)
+            //{
+            //    Console.WriteLine(t.ToString());
+            //}
+            foreach (var t in HeadTeachers)
+            {
+                Console.WriteLine("=========================================================");
+                Console.WriteLine("\t========BẢNG TÍNH LƯƠNG HIỆU TRƯỞNG========");
+                Console.WriteLine("=========================================================");
+               
+                Console.WriteLine(t.PrintInfoSalaryTeacher());
+                Console.Write("Lương:\t");
+                Console.WriteLine(t.CalculateSalary());
+            }
+            #endregion
+
+            #region Dummy data & tính lương hiệu phó
+            //foreach (var t in AssistantHeadTeachers)
+            //{
+            //    Console.WriteLine(t.ToString());
+            //}
+            foreach (var t in AssistantHeadTeachers)
+            {
+                Console.WriteLine("=========================================================");
+                Console.WriteLine("\t========BẢNG TÍNH LƯƠNG HIỆU PHÓ========");
+                Console.WriteLine("=========================================================");
+                Console.WriteLine(t.PrintInfoSalaryTeacher());
+                Console.Write("Lương:\t");
+                Console.WriteLine(t.CalculateSalary());
+            }
+            #endregion
 
 
             Console.ReadKey();
