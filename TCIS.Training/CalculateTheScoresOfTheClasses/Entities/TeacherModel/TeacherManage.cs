@@ -8,7 +8,7 @@ namespace CalculateTheScoresOfTheClasses.Entities.TeacherModel
 {
     public class TeacherManage : Teacher
     {
-        public TeacherManage(int id, string name) 
+        public TeacherManage(int id, string name): base(id, name)
         {
         }     
 

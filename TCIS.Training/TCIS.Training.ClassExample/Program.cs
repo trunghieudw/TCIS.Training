@@ -86,7 +86,6 @@ namespace TCIS.Training.ClassExample
 
             var ex = new SalaryClassification
             {
-
                 Id = 1,
                 Level = 1,
                 BaseSalary = 5_000_000D
@@ -96,7 +95,6 @@ namespace TCIS.Training.ClassExample
 
             ex = new SalaryClassification
             {
-
                 Id = 2,
                 Level = 2,
                 BaseSalary = 10_000_000D
@@ -106,7 +104,6 @@ namespace TCIS.Training.ClassExample
 
             ex = new SalaryClassification
             {
-
                 Id = 3,
                 Level = 3,
                 BaseSalary = 15_000_000D

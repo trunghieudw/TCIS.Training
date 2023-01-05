@@ -8,10 +8,12 @@ namespace CalculateTheScoresOfTheClasses.Entities.TeacherModel
 {
     public class HeadTeacher : TeacherManage
     {
-        public HeadTeacher(int id, string name) : base(id, name)
+        public  HeadTeacher(int id, string name) : base(id, name)
         {
 
         }
+
+
         public override double CalculateSalary()
         {
             return Coefficient * BasicSalary + Allowance + ManagementAllowance;

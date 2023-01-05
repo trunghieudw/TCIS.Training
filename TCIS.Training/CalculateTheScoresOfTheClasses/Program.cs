@@ -14,7 +14,7 @@ namespace CalculateTheScoresOfTheClasses
         static List<ClassificationClassWeek> ClassificationClassesWeeks { get; set; }
         static List<ClassificationInWeeksDTO> ClassificationInWeeksDTOs { get; set; }
         static List<ClassificationClassesMonth> ClassificationClassesMonths { get; set; }
-        static List<ClassificationInMonthsDTO> ClassificationInMonthsDTOs { get; set; }  
+        static List<ClassificationInMonthsDTO> ClassificationInMonthsDTOs { get; set; }
         static List<ClassificationClassesYear> ClassificationClassesYears { get; set; }
         static List<ClassificationInYearsDTO> ClassificationInYearsDTOs { get; set; }
         static List<HomeroomTeacher> HomeroomTeachers { get; set; }
@@ -44,12 +44,7 @@ namespace CalculateTheScoresOfTheClasses
             Teachers = new List<Teacher>();
 
             var classes = new List<string>{"6A1", "6A2", "6A3", "6A4", "6A5", "6A6",
-                "7A1", "7A2", "7A3", "8A1", "8A2", "8A3", "8A4", "9A1", "9A2", "9A3", "9A4"};
-
-            //var violationError = new List<string> { "DiHocTre", "VaoHocTre" , "TronTiet", "VangCoPhep",
-            //    "KhongDongPhuc", "MangVietXoa","TietHocLoaiCD" ,"KhongThucHienTotChaoCo" ,"NhuomToc" ,"NoiTucChuiThe" ,"VoLe" ,
-            //"PhaHoaiTaiSan" ,"TeNanXaHoi" ,"VeSinhBan" ,"XaRacBuaBai" ,"MangDTDD" ,"KhongTatQuatDien" ,"KhongHoanThanhNiemVu" ,"BaoLucHocDuong"};
-
+                "7A1", "7A2", "7A3", "8A1", "8A2", "8A3", "8A4", "9A1", "9A2", "9A3", "9A4"};         
 
             var classCount = classes.Count();//16
             var random = new Random();
@@ -59,10 +54,29 @@ namespace CalculateTheScoresOfTheClasses
                            //int violationErrorCount= violationError.Count();
 
             #region Generates data GVCN
-            for (int i = 0; i < classCount; i++)
+            //for (int i = 0; i <= classCount; i++)
+            //{
+            //    //var gvcn = new HomeroomTeacher
+            //    //{
+
+            //    //};
+            //    HomeroomTeachers.Add(new HomeroomTeacher(i + 1, $"Nguyen Van {i + 1}"));
+            //}
+            #endregion
+
+            #region Generates data GVCN PrintInfoSalaryTeacher
+            for (int i = 0; i <= classCount ; i++)
             {
-                HomeroomTeachers.Add(new HomeroomTeacher(i + 1, $"Nguyen Van {i + 1}"));
+                HomeroomTeachers.Add(new HomeroomTeacher(
+                    i+1,
+                    $"Nguyen Van {i+1}",
+                    1,
+                    5000000,
+                    1,
+                    3000000
+                    ));
             }
+
             #endregion
 
 
@@ -167,7 +181,7 @@ namespace CalculateTheScoresOfTheClasses
                     {
                         Id = j + 1,
                         Class = Classes.FirstOrDefault(x => x.Name == classes[j]),
-                        NumberWeek = i,                        
+                        NumberWeek = i,
                         // random điểm trừ
                         DiHocTre = random.Next(0, 20),
                         VangCoPhep = random.Next(0, 20),
@@ -253,8 +267,8 @@ namespace CalculateTheScoresOfTheClasses
                     //ScoreBoard = ScoreBoards.FirstOrDefault(x=>x.VangCoPhep == 0 ),
 
                     Classification = ClassificationRedStar.XuatSac.ToString()
-                }              
-                
+                }
+
             });
             #endregion
 
@@ -580,13 +594,20 @@ namespace CalculateTheScoresOfTheClasses
             //}
             #endregion
 
-            #region Dummy data GVCN
+            #region Dummy data & Tính lương GVCN
             foreach (var t in HomeroomTeachers)
             {
                 Console.WriteLine(t.ToString());
             }
+            foreach (var t in HomeroomTeachers)
+            {
+                Console.WriteLine("=================================");
+                Console.WriteLine(t.PrintInfoSalaryTeacher());                
+                Console.Write("Lương:\t");
+                Console.WriteLine(t.CalculateSalary());
+            }           
+            #endregion
 
-            #endregion  
 
 
             Console.ReadKey();
@@ -594,3 +615,4 @@ namespace CalculateTheScoresOfTheClasses
         }
     }
 }
+
