@@ -12,6 +12,11 @@ namespace CalculateTheScoresOfTheClasses.Entities.TeacherModel
         {
 
         }
+
+        public int HeadTeacherId => Id;
+        public string HeadTeacherName => Name;
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -32,7 +37,7 @@ namespace CalculateTheScoresOfTheClasses.Entities.TeacherModel
         }
         public override string ToString()
         {
-            return $"{Id}-{Name}";
+            return base.ToString();
         }
         /// <summary>
         /// Coefficient: hệ số lương
@@ -46,15 +51,12 @@ namespace CalculateTheScoresOfTheClasses.Entities.TeacherModel
         /// </returns>
         public override string PrintInfoSalaryTeacher()
         {
-            return $"ID: {Id}\t Tên: {Name}\t \nHệ số lương: {Coefficient}\t Lương cơ bản: {BasicSalary}\t \nCấp bậc: {Level}\t Phụ cấp: {Allowance}\t PCQL:{ManagementAllowance}";
+            return base.PrintInfoSalaryTeacher();
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        
         public override double CalculateSalary()
         {
-            return Coefficient * BasicSalary + Allowance + ManagementAllowance;
+            return base.CalculateSalary();
         }
 
     }

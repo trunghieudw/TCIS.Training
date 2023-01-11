@@ -20,18 +20,20 @@ namespace CalculateTheScoresOfTheClasses.Entities.TeacherModel
         }
         public int HomeroomTeacherId => Id;
         public string HomeroomTeacherName => Name;
-
+ 
         public override string ToString()
         {
             return $"{Id}-{Name}";
         }
         public override string PrintInfoSalaryTeacher()
         {
-            return $"ID: {Id}\t Tên: {Name}\t \nHệ số lương: {Coefficient}\t Lương cơ bản: {BasicSalary}\t \nCấp bậc: {Level}\t Phụ cấp: {Allowance}";
+            return $"ID: {Id}\t Tên: {Name}\t " +
+                $"\nHệ số lương: {Coefficient}\t Lương cơ bản: {BasicSalary}\t" +
+                $" \nCấp bậc: {Level}\t Phụ cấp: {Allowance}";
         }
         public override double CalculateSalary()
         {
-            return  Coefficient* BasicSalary +Allowance;
+            return  Coefficient* BasicSalary + Allowance;
         }
 
     }

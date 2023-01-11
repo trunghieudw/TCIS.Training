@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalculateTheScoresOfTheClasses.Entities.TeacherModel
 {
-    public class Teacher : Person
+    public abstract class Teacher : Person
     {
         public Teacher(int id, string name)
         {
@@ -29,7 +29,9 @@ namespace CalculateTheScoresOfTheClasses.Entities.TeacherModel
         }
         public virtual string PrintInfoSalaryTeacher()
         {
-            return $"ID: {Id}\t Tên: {Name}\t \nHệ số lương: {Coefficient}\t Lương cơ bản: {BasicSalary}\n Cấp bậc: {Level}\t Phụ cấp: {Allowance}";
+            return $"ID: {Id}\t Tên: {Name}\t \nHệ số lương: {Coefficient}\t" +
+                $" Lương cơ bản: {BasicSalary}\n" +
+                $" Cấp bậc: {Level}\t Phụ cấp: {Allowance}";
         }
         public virtual double CalculateSalary()
         {
